@@ -40,7 +40,7 @@
 <meta itemprop="name" content="PG死锁检测">
 <meta itemprop="description" content="PostgreSQL中锁机制及其原理"><meta itemprop="datePublished" content="2021-07-07T19:27:56+08:00" />
 <meta itemprop="dateModified" content="2021-07-07T19:27:56+08:00" />
-<meta itemprop="wordCount" content="18">
+<meta itemprop="wordCount" content="65">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="PG死锁检测"/>
 <meta name="twitter:description" content="PostgreSQL中锁机制及其原理"/>
@@ -301,6 +301,14 @@ function tagCloud(where, min, max) {
     </div>
     <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
       <p>PostgreSQL中锁机制及其原理</p>
+<p>PostgreSQL版本&gt;9.6, 可以使用更为精简的查询</p>
+<pre><code class="language-sql">select pid, query_start,
+       usename, 
+       pg_blocking_pids(pid) as blocked_by, 
+       query as blocked_query
+from pg_stat_activity
+where cardinality(pg_blocking_pids(pid)) &gt; 0;
+</code></pre>
     </div>
     <div class="article-footer">
 
