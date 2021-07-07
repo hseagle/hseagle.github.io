@@ -3,77 +3,77 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://example.com/tags/ha/</loc>
+    <loc>https://hseagle.github.io/tags/ha/</loc>
     <lastmod>2021-07-05T16:20:43+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://example.com/2021/07/patroni/</loc>
+    <loc>https://hseagle.github.io/2021/07/patroni/</loc>
     <lastmod>2021-07-05T16:20:43+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://example.com/</loc>
+    <loc>https://hseagle.github.io/</loc>
     <lastmod>2021-07-05T16:20:43+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://example.com/posts/</loc>
+    <loc>https://hseagle.github.io/posts/</loc>
     <lastmod>2021-07-05T16:20:43+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://example.com/tags/</loc>
+    <loc>https://hseagle.github.io/tags/</loc>
     <lastmod>2021-07-05T16:20:43+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://example.com/categories/</loc>
+    <loc>https://hseagle.github.io/categories/</loc>
     <lastmod>2021-07-05T12:43:24+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://example.com/categories/postgresql/</loc>
+    <loc>https://hseagle.github.io/categories/postgresql/</loc>
     <lastmod>2021-07-05T12:43:24+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://example.com/tags/postgresql/</loc>
+    <loc>https://hseagle.github.io/tags/postgresql/</loc>
     <lastmod>2021-07-05T12:43:24+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://example.com/2021/07/pg-install/</loc>
+    <loc>https://hseagle.github.io/2021/07/pg-install/</loc>
     <lastmod>2021-07-05T12:43:24+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://example.com/2021/07/my-first-post/</loc>
+    <loc>https://hseagle.github.io/2021/07/my-first-post/</loc>
     <lastmod>2021-07-05T12:23:19+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://example.com/series/</loc>
+    <loc>https://hseagle.github.io/series/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
