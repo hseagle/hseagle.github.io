@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
   <head>
     <title>
         Patroni--首选的PG HA方案 - PG极简运维
@@ -67,11 +67,11 @@
           </a>
           <h2 id="name" class="hidden-xs hidden-sm">数据猿</h2>
           <h3 id="title" class="hidden-xs hidden-sm hidden-md">被程序截胡的段子手</h3>
-          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Shanghai, China</small>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>心之所系，身之所往</small>
         </div><div class="search" id="search-form-wrap">
     <form class="search-form sidebar-form">
         <div class="input-group">
-            <input type="text" class="search-form-input form-control" placeholder="Search" />
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
             <span class="input-group-btn">
                 <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
                         class="icon icon-search"></i></button>
@@ -81,7 +81,7 @@
             <div class="ins-search-mask"></div>
             <div class="ins-search-container">
                 <div class="ins-input-wrapper">
-                    <input type="text" class="ins-search-input" placeholder="Type something..."
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
                         x-webkit-speech />
                     <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
                         aria-label="Close"><span aria-hidden="true">×</span></button>
@@ -105,31 +105,31 @@
             <li class="menu-item menu-item-home">
                 <a href="/">
                     <i class="icon icon-home-fill"></i>
-                  <span class="menu-title">Home</span>
+                  <span class="menu-title">主页</span>
                 </a>
             </li>
             <li class="menu-item menu-item-archives">
                 <a href="/posts/">
                     <i class="icon icon-archives-fill"></i>
-                  <span class="menu-title">Archives</span>
+                  <span class="menu-title">归档</span>
                 </a>
             </li>
             <li class="menu-item menu-item-categories">
                 <a href="/categories/">
                     <i class="icon icon-folder"></i>
-                  <span class="menu-title">Categories</span>
+                  <span class="menu-title">分类</span>
                 </a>
             </li>
             <li class="menu-item menu-item-tags">
                 <a href="/tags/">
                     <i class="icon icon-tags"></i>
-                  <span class="menu-title">Tags</span>
+                  <span class="menu-title">标签</span>
                 </a>
             </li>
             <li class="menu-item menu-item-about">
                 <a href="/about/">
                     <i class="icon icon-cup-fill"></i>
-                  <span class="menu-title">About</span>
+                  <span class="menu-title">关于</span>
                 </a>
             </li>
         </ul>
@@ -141,7 +141,7 @@
   <div class="slimContent">
     
       <div class="widget">
-    <h3 class="widget-title">Board</h3>
+    <h3 class="widget-title">公告</h3>
     <div class="widget-body">
         <div id="board">
             <div class="content"><p>明天继续</p>
@@ -151,15 +151,27 @@
 </div>
 
       <div class="widget">
-    <h3 class="widget-title"> Tags</h3>
+    <h3 class="widget-title"> 标签</h3>
     <div id="tag-cloud-list" class="widget-body">
+            
+            
+            <a href="https://hseagle.github.io/tags/citus/" class="tag-list-link" rel="1">citus<span
+               class="tag-list-count">1</span></a>
             
             
             <a href="https://hseagle.github.io/tags/ha/" class="tag-list-link" rel="1">ha<span
                class="tag-list-count">1</span></a>
             
             
+            <a href="https://hseagle.github.io/tags/index/" class="tag-list-link" rel="1">index<span
+               class="tag-list-count">1</span></a>
+            
+            
             <a href="https://hseagle.github.io/tags/postgresql/" class="tag-list-link" rel="1">postgresql<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://hseagle.github.io/tags/%E7%B4%A2%E5%BC%95/" class="tag-list-link" rel="1">索引<span
                class="tag-list-count">1</span></a>
             
     </div>
@@ -188,24 +200,37 @@ function tagCloud(where, min, max) {
 </div>
 
       <div class="widget">
-    <h3 class="widget-title"> Categories</h3>
+    <h3 class="widget-title"> 分类</h3>
     <div class="widget-body">
         <ul class="category-list">
+            <li class="category-list-item"><a href="https://hseagle.github.io/categories/citus/" class="category-list-link">citus</a><span class="category-list-count">1</span></li>
             <li class="category-list-item"><a href="https://hseagle.github.io/categories/postgresql/" class="category-list-link">postgresql</a><span class="category-list-count">1</span></li>
         </ul>
     </div>
 </div>
       <div class="widget">
-    <h3 class="widget-title"> Tags</h3>
+    <h3 class="widget-title"> 标签</h3>
     <div class="widget-body">
         <ul class="tag-list">
+            
+            
+            <li class="tag-list-item"><a href="https://hseagle.github.io/tags/citus/" class="tag-list-link">citus</a><span
+                    class="tag-list-count">1</span></li>
             
             
             <li class="tag-list-item"><a href="https://hseagle.github.io/tags/ha/" class="tag-list-link">ha</a><span
                     class="tag-list-count">1</span></li>
             
             
+            <li class="tag-list-item"><a href="https://hseagle.github.io/tags/index/" class="tag-list-link">index</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
             <li class="tag-list-item"><a href="https://hseagle.github.io/tags/postgresql/" class="tag-list-link">postgresql</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://hseagle.github.io/tags/%E7%B4%A2%E5%BC%95/" class="tag-list-link">索引</a><span
                     class="tag-list-count">1</span></li>
             
         </ul>
@@ -214,7 +239,7 @@ function tagCloud(where, min, max) {
 </div>
       
 <div class="widget">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">最新文章</h3>
     <div class="widget-body">
         <ul class="recent-post-list list-unstyled no-thumbnail">
             <li>
@@ -224,6 +249,16 @@ function tagCloud(where, min, max) {
                     </p>
                     <p class="item-date">
                         <time datetime="2021-07-07 19:27:56 &#43;0800 CST" itemprop="datePublished">2021-07-07</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://hseagle.github.io/2021/07/pg-indexes/" class="title">PG索引概述</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2021-07-05 17:12:50 &#43;0800 CST" itemprop="datePublished">2021-07-05</time>
                     </p>
                 </div>
             </li>
@@ -240,20 +275,20 @@ function tagCloud(where, min, max) {
             <li>
                 <div class="item-inner">
                     <p class="item-title">
-                        <a href="https://hseagle.github.io/2021/07/pg-install/" class="title">PostgreSQL安装和运行</a>
+                        <a href="https://hseagle.github.io/2021/07/pg-extension-citus/" class="title">Citus扩展</a>
                     </p>
                     <p class="item-date">
-                        <time datetime="2021-07-05 12:43:24 &#43;0800 CST" itemprop="datePublished">2021-07-05</time>
+                        <time datetime="2021-07-05 16:14:46 &#43;0800 CST" itemprop="datePublished">2021-07-05</time>
                     </p>
                 </div>
             </li>
             <li>
                 <div class="item-inner">
                     <p class="item-title">
-                        <a href="https://hseagle.github.io/2021/07/my-first-post/" class="title">PG的明天值得期待</a>
+                        <a href="https://hseagle.github.io/2021/07/pg-sql-optimization/" class="title">SQL查询性能优化</a>
                     </p>
                     <p class="item-date">
-                        <time datetime="2021-07-05 12:23:19 &#43;0800 CST" itemprop="datePublished">2021-07-05</time>
+                        <time datetime="2021-07-05 14:29:27 &#43;0800 CST" itemprop="datePublished">2021-07-05</time>
                     </p>
                 </div>
             </li>
@@ -267,7 +302,7 @@ function tagCloud(where, min, max) {
     
 <aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
   <div class="slimContent">
-    <h4 class="toc-title">Catalogue</h4>
+    <h4 class="toc-title">文章目录</h4>
     <nav id="toc" class="js-toc toc">
 
     </nav>
@@ -300,7 +335,7 @@ function tagCloud(where, min, max) {
     <a class="article-tag-link" href="/tags/ha/"> ha </a>
   </span>
 
-		<span class="post-readcount hidden-xs" itemprop="timeRequired">Read Time: 1 minutes </span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 1分 </span>
       </div>
     </div>
     <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
@@ -314,20 +349,20 @@ function tagCloud(where, min, max) {
     <div class="bar-inner">
         <ul class="pager pull-left">
             <li class="prev">
-                <a href="https://hseagle.github.io/2021/07/pg-install/" title="PostgreSQL安装和运行"><i
+                <a href="https://hseagle.github.io/2021/07/pg-extension-citus/" title="Citus扩展"><i
                         class="icon icon-angle-left"
-                        aria-hidden="true"></i><span>&nbsp;&nbsp;Older</span></a>
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
             </li>
             <li class="next">
-                <a href="https://hseagle.github.io/2021/07/pg-locks/"
-                    title="PG死锁检测"><span>Newer&nbsp;&nbsp;</span><i
+                <a href="https://hseagle.github.io/2021/07/pg-indexes/"
+                    title="PG索引概述"><span>上一篇&nbsp;&nbsp;</span><i
                         class="icon icon-angle-right" aria-hidden="true"></i></a>
             </li>
             
             <li class="toggle-toc">
                 <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
-                    title="Catalogue" role="button">
-                    <span>[&nbsp;</span><span>Catalogue</span>
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
                     <i class="text-collapsed icon icon-anchor"></i>
                     <i class="text-in icon icon-close"></i>
                     <span>]</span>
@@ -391,11 +426,11 @@ function tagCloud(where, min, max) {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Posts',
-                PAGES: 'Pages',
-                CATEGORIES: 'Categories',
-                TAGS: 'Tags',
-                UNTITLED: '(Untitled)',
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
             },
             ROOT_URL: 'https:\/\/hseagle.github.io\/',
             CONTENT_URL: 'https:\/\/hseagle.github.io\/\/searchindex.json ',

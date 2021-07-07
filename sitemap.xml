@@ -24,6 +24,34 @@
   </url>
   
   <url>
+    <loc>https://hseagle.github.io/tags/index/</loc>
+    <lastmod>2021-07-05T17:12:50+08:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://hseagle.github.io/2021/07/pg-indexes/</loc>
+    <lastmod>2021-07-05T17:12:50+08:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://hseagle.github.io/tags/</loc>
+    <lastmod>2021-07-05T17:12:50+08:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://hseagle.github.io/tags/%E7%B4%A2%E5%BC%95/</loc>
+    <lastmod>2021-07-05T17:12:50+08:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://hseagle.github.io/tags/ha/</loc>
     <lastmod>2021-07-05T16:20:43+08:00</lastmod>
     <changefreq>monthly</changefreq>
@@ -38,15 +66,36 @@
   </url>
   
   <url>
-    <loc>https://hseagle.github.io/tags/</loc>
-    <lastmod>2021-07-05T16:20:43+08:00</lastmod>
+    <loc>https://hseagle.github.io/categories/</loc>
+    <lastmod>2021-07-05T16:14:46+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://hseagle.github.io/categories/</loc>
-    <lastmod>2021-07-05T12:43:24+08:00</lastmod>
+    <loc>https://hseagle.github.io/tags/citus/</loc>
+    <lastmod>2021-07-05T16:14:46+08:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://hseagle.github.io/categories/citus/</loc>
+    <lastmod>2021-07-05T16:14:46+08:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://hseagle.github.io/2021/07/pg-extension-citus/</loc>
+    <lastmod>2021-07-05T16:14:46+08:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://hseagle.github.io/2021/07/pg-sql-optimization/</loc>
+    <lastmod>2021-07-05T14:29:27+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>

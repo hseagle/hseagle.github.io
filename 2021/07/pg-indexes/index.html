@@ -2,7 +2,7 @@
 <html lang="zh">
   <head>
     <title>
-        PostgreSQL安装和运行 - PG极简运维
+        PG索引概述 - PG极简运维
       </title>
         <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -20,30 +20,30 @@
     <meta http-equiv="window-target" content="_top" />
     
     
-    <meta name="description" content="本节涉及PostgreSQL的安装和运行， PostgreSQL历史悠久，Linux的各大发行版都对其支持友好，基本上都有编译好的二进制包直接可供下载安装。如果想亲自体验一下PostgreSQL的源码编译过程，那么就下载源码进行DIY，过程也不复杂。
+    <meta name="description" content="PostgreSQL支持多种索引类型， 在不同场景下，选用合适的索引，会极大的提升查询和分析性能。
 " />
     <meta name="generator" content="Hugo 0.84.4 with theme pure" />
-    <title>PostgreSQL安装和运行 - PG极简运维</title>
+    <title>PG索引概述 - PG极简运维</title>
     
     
     <link rel="stylesheet" href="https://hseagle.github.io/css/style.min.e64d754037c0ee0ec4e20ab1d6f07740ace61729bc03850559b8caa21ae4a597.css">
     
     <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
-    <meta property="og:title" content="PostgreSQL安装和运行" />
-<meta property="og:description" content="本节涉及PostgreSQL的安装和运行， PostgreSQL历史悠久，Linux的各大发行版都对其支持友好，基本上都有编译好的二进制包直接可供下载安装。如果想亲自体验一下PostgreSQL的源码编译过程，那么就下载源码进行DIY，过程也不复杂。" />
+    <meta property="og:title" content="PG索引概述" />
+<meta property="og:description" content="PostgreSQL支持多种索引类型， 在不同场景下，选用合适的索引，会极大的提升查询和分析性能。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://hseagle.github.io/2021/07/pg-install/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2021-07-05T12:43:24+08:00" />
-<meta property="article:modified_time" content="2021-07-05T12:43:24+08:00" />
+<meta property="og:url" content="https://hseagle.github.io/2021/07/pg-indexes/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-07-05T17:12:50+08:00" />
+<meta property="article:modified_time" content="2021-07-05T17:12:50+08:00" />
 
-<meta itemprop="name" content="PostgreSQL安装和运行">
-<meta itemprop="description" content="本节涉及PostgreSQL的安装和运行， PostgreSQL历史悠久，Linux的各大发行版都对其支持友好，基本上都有编译好的二进制包直接可供下载安装。如果想亲自体验一下PostgreSQL的源码编译过程，那么就下载源码进行DIY，过程也不复杂。"><meta itemprop="datePublished" content="2021-07-05T12:43:24+08:00" />
-<meta itemprop="dateModified" content="2021-07-05T12:43:24+08:00" />
-<meta itemprop="wordCount" content="151">
-<meta itemprop="keywords" content="postgresql," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="PostgreSQL安装和运行"/>
-<meta name="twitter:description" content="本节涉及PostgreSQL的安装和运行， PostgreSQL历史悠久，Linux的各大发行版都对其支持友好，基本上都有编译好的二进制包直接可供下载安装。如果想亲自体验一下PostgreSQL的源码编译过程，那么就下载源码进行DIY，过程也不复杂。"/>
+<meta itemprop="name" content="PG索引概述">
+<meta itemprop="description" content="PostgreSQL支持多种索引类型， 在不同场景下，选用合适的索引，会极大的提升查询和分析性能。"><meta itemprop="datePublished" content="2021-07-05T17:12:50+08:00" />
+<meta itemprop="dateModified" content="2021-07-05T17:12:50+08:00" />
+<meta itemprop="wordCount" content="48">
+<meta itemprop="keywords" content="index,索引," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="PG索引概述"/>
+<meta name="twitter:description" content="PostgreSQL支持多种索引类型， 在不同场景下，选用合适的索引，会极大的提升查询和分析性能。"/>
 
     <!--[if lte IE 9]>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -316,8 +316,8 @@ function tagCloud(where, min, max) {
       <h1 itemprop="name">
   <a
     class="article-title"
-    href="/2021/07/pg-install/"
-    >PostgreSQL安装和运行</a
+    href="/2021/07/pg-indexes/"
+    >PG索引概述</a
   >
 </h1>
 
@@ -325,32 +325,22 @@ function tagCloud(where, min, max) {
         
 <span class="article-date">
   <i class="icon icon-calendar-check"></i>&nbsp;
-<a href="https://hseagle.github.io/2021/07/pg-install/" class="article-date">
-  <time datetime="2021-07-05 12:43:24 &#43;0800 CST" itemprop="datePublished">2021-07-05</time>
+<a href="https://hseagle.github.io/2021/07/pg-indexes/" class="article-date">
+  <time datetime="2021-07-05 17:12:50 &#43;0800 CST" itemprop="datePublished">2021-07-05</time>
 </a>
 </span>
-<span class="article-category">
-  <i class="icon icon-folder"></i>&nbsp;
-  <a class="article-category-link" href="/categories/postgresql/"> PostgreSQL </a>
-</span>  
+  
   <span class="article-tag">
     <i class="icon icon-tags"></i>&nbsp;
-    <a class="article-tag-link" href="/tags/postgresql/"> postgresql </a>
+    <a class="article-tag-link" href="/tags/index/"> index </a>
+    <a class="article-tag-link" href="/tags/%E7%B4%A2%E5%BC%95/"> 索引 </a>
   </span>
 
 		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 1分 </span>
       </div>
     </div>
     <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
-      <p>本节涉及PostgreSQL的安装和运行， PostgreSQL历史悠久，Linux的各大发行版都对其支持友好，基本上都有编译好的二进制包直接可供下载安装。如果想亲自体验一下PostgreSQL的源码编译过程，那么就下载源码进行DIY，过程也不复杂。</p>
-<hr>
-<h1 id="源码安装">源码安装</h1>
-<h1 id="centos下安装">centos下安装</h1>
-<h1 id="运行">运行</h1>
-<h2 id="初始化">初始化</h2>
-<pre><code class="language-bash">initdb --locale=en_US.UTF-8 -E UTF8 -D /var/lib/postgres/data
-postgres -D /var/lib/postgres/data
-</code></pre>
+      <p>PostgreSQL支持多种索引类型， 在不同场景下，选用合适的索引，会极大的提升查询和分析性能。</p>
     </div>
     <div class="article-footer">
 
@@ -360,13 +350,13 @@ postgres -D /var/lib/postgres/data
     <div class="bar-inner">
         <ul class="pager pull-left">
             <li class="prev">
-                <a href="https://hseagle.github.io/2021/07/my-first-post/" title="PG的明天值得期待"><i
+                <a href="https://hseagle.github.io/2021/07/patroni/" title="Patroni--首选的PG HA方案"><i
                         class="icon icon-angle-left"
                         aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
             </li>
             <li class="next">
-                <a href="https://hseagle.github.io/2021/07/pg-sql-optimization/"
-                    title="SQL查询性能优化"><span>上一篇&nbsp;&nbsp;</span><i
+                <a href="https://hseagle.github.io/2021/07/pg-locks/"
+                    title="PG死锁检测"><span>上一篇&nbsp;&nbsp;</span><i
                         class="icon icon-angle-right" aria-hidden="true"></i></a>
             </li>
             

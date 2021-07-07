@@ -2,8 +2,7 @@
 <html lang="zh">
   <head>
     <title>
-        PostgreSQL安装和运行 - PG极简运维
-      </title>
+        PG极简运维</title>
         <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport"
@@ -20,30 +19,25 @@
     <meta http-equiv="window-target" content="_top" />
     
     
-    <meta name="description" content="本节涉及PostgreSQL的安装和运行， PostgreSQL历史悠久，Linux的各大发行版都对其支持友好，基本上都有编译好的二进制包直接可供下载安装。如果想亲自体验一下PostgreSQL的源码编译过程，那么就下载源码进行DIY，过程也不复杂。
-" />
-    <meta name="generator" content="Hugo 0.84.4 with theme pure" />
-    <title>PostgreSQL安装和运行 - PG极简运维</title>
     
+    <meta name="generator" content="Hugo 0.84.4 with theme pure" />
+    <title>PG极简运维</title>
+    
+    <link rel="alternate" type="application/rss+xml" href="https://hseagle.github.io/tags/citus/index.xml" title="PG极简运维" />
     
     <link rel="stylesheet" href="https://hseagle.github.io/css/style.min.e64d754037c0ee0ec4e20ab1d6f07740ace61729bc03850559b8caa21ae4a597.css">
     
     <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
-    <meta property="og:title" content="PostgreSQL安装和运行" />
-<meta property="og:description" content="本节涉及PostgreSQL的安装和运行， PostgreSQL历史悠久，Linux的各大发行版都对其支持友好，基本上都有编译好的二进制包直接可供下载安装。如果想亲自体验一下PostgreSQL的源码编译过程，那么就下载源码进行DIY，过程也不复杂。" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://hseagle.github.io/2021/07/pg-install/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2021-07-05T12:43:24+08:00" />
-<meta property="article:modified_time" content="2021-07-05T12:43:24+08:00" />
+    <meta property="og:title" content="citus" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://hseagle.github.io/tags/citus/" />
 
-<meta itemprop="name" content="PostgreSQL安装和运行">
-<meta itemprop="description" content="本节涉及PostgreSQL的安装和运行， PostgreSQL历史悠久，Linux的各大发行版都对其支持友好，基本上都有编译好的二进制包直接可供下载安装。如果想亲自体验一下PostgreSQL的源码编译过程，那么就下载源码进行DIY，过程也不复杂。"><meta itemprop="datePublished" content="2021-07-05T12:43:24+08:00" />
-<meta itemprop="dateModified" content="2021-07-05T12:43:24+08:00" />
-<meta itemprop="wordCount" content="151">
-<meta itemprop="keywords" content="postgresql," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="PostgreSQL安装和运行"/>
-<meta name="twitter:description" content="本节涉及PostgreSQL的安装和运行， PostgreSQL历史悠久，Linux的各大发行版都对其支持友好，基本上都有编译好的二进制包直接可供下载安装。如果想亲自体验一下PostgreSQL的源码编译过程，那么就下载源码进行DIY，过程也不复杂。"/>
+<meta itemprop="name" content="citus">
+<meta itemprop="description" content=""><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="citus"/>
+<meta name="twitter:description" content=""/>
 
     <!--[if lte IE 9]>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -300,94 +294,41 @@ function tagCloud(where, min, max) {
 
     
     
-<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
-  <div class="slimContent">
-    <h4 class="toc-title">文章目录</h4>
-    <nav id="toc" class="js-toc toc">
-
-    </nav>
-  </div>
-</aside>
-<main class="main" role="main"><div class="content">
-  <article id="-" class="article article-type-" itemscope
-    itemtype="http://schema.org/BlogPosting">
-    
-    <div class="article-header">
-      <h1 itemprop="name">
-  <a
-    class="article-title"
-    href="/2021/07/pg-install/"
-    >PostgreSQL安装和运行</a
-  >
-</h1>
-
-      <div class="article-meta">
+<main class="main" role="main">
+    <article class="content article article-tags post-type-list" itemscope="">
+        <header class="article-header">
+            <h1 itemprop="name" class="hidden-xs">citus</h1>
+            <p class="text-muted hidden-xs">共 5 个标签</p>
+            <nav role="navigation" id="nav-main" class="okayNav">
+                <ul>
+                    <li><a href="https://hseagle.github.io/tags">All</a></li>
+                    <li><a href="https://hseagle.github.io/tags/citus/">citus</a></li>
+                    <li><a href="https://hseagle.github.io/tags/ha/">ha</a></li>
+                    <li><a href="https://hseagle.github.io/tags/index/">index</a></li>
+                    <li><a href="https://hseagle.github.io/tags/postgresql/">postgresql</a></li>
+                    <li><a href="https://hseagle.github.io/tags/%E7%B4%A2%E5%BC%95/">索引</a></li>
+                </ul>
+            </nav>
+        </header>
         
-<span class="article-date">
-  <i class="icon icon-calendar-check"></i>&nbsp;
-<a href="https://hseagle.github.io/2021/07/pg-install/" class="article-date">
-  <time datetime="2021-07-05 12:43:24 &#43;0800 CST" itemprop="datePublished">2021-07-05</time>
-</a>
-</span>
-<span class="article-category">
-  <i class="icon icon-folder"></i>&nbsp;
-  <a class="article-category-link" href="/categories/postgresql/"> PostgreSQL </a>
-</span>  
-  <span class="article-tag">
-    <i class="icon icon-tags"></i>&nbsp;
-    <a class="article-tag-link" href="/tags/postgresql/"> postgresql </a>
-  </span>
-
-		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 1分 </span>
-      </div>
-    </div>
-    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
-      <p>本节涉及PostgreSQL的安装和运行， PostgreSQL历史悠久，Linux的各大发行版都对其支持友好，基本上都有编译好的二进制包直接可供下载安装。如果想亲自体验一下PostgreSQL的源码编译过程，那么就下载源码进行DIY，过程也不复杂。</p>
-<hr>
-<h1 id="源码安装">源码安装</h1>
-<h1 id="centos下安装">centos下安装</h1>
-<h1 id="运行">运行</h1>
-<h2 id="初始化">初始化</h2>
-<pre><code class="language-bash">initdb --locale=en_US.UTF-8 -E UTF8 -D /var/lib/postgres/data
-postgres -D /var/lib/postgres/data
-</code></pre>
-    </div>
-    <div class="article-footer">
-
-    </div>
-  </article>
-</div><nav class="bar bar-footer clearfix" data-stick-bottom>
-    <div class="bar-inner">
-        <ul class="pager pull-left">
-            <li class="prev">
-                <a href="https://hseagle.github.io/2021/07/my-first-post/" title="PG的明天值得期待"><i
-                        class="icon icon-angle-left"
-                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
-            </li>
-            <li class="next">
-                <a href="https://hseagle.github.io/2021/07/pg-sql-optimization/"
-                    title="SQL查询性能优化"><span>上一篇&nbsp;&nbsp;</span><i
-                        class="icon icon-angle-right" aria-hidden="true"></i></a>
-            </li>
-            
-            <li class="toggle-toc">
-                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
-                    title="文章目录" role="button">
-                    <span>[&nbsp;</span><span>文章目录</span>
-                    <i class="text-collapsed icon icon-anchor"></i>
-                    <i class="text-in icon icon-close"></i>
-                    <span>]</span>
-                </a>
-            </li>
-        </ul>
-        <div class="bar-right">
-            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
-                data-mobile-sites="weibo,qq,qzone"></div>
+        <div class="article-body">
+            <div class="col-md-6"><article class="panel panel-default hover-shadow hover-grow" itemscope itemtype="http://schema.org/BlogPosting">
+    <div class="panel-body">
+        <div class="article-meta">
+            <time datetime="2021-07-05 16:14:46 &#43;0800 CST"
+                itemprop="datePublished">2021-07-05</time>
         </div>
+        <h3 class="article-title" itemprop="name">
+            <a class="article-link" href="https://hseagle.github.io/2021/07/pg-extension-citus/">Citus扩展</a>
+        </h3>
     </div>
-</nav>
-
-
+    <div class="panel-footer">
+        <a href="https://hseagle.github.io/tags/citus" class="label label-default mb">citus</a>
+    </div>
+</article>
+            </div>
+        </div>
+    </article>
 </main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
 <ul class="social-links">
     <li><a href="https://hseagle.github.io/" target="_blank" title="github" data-toggle=tooltip data-placement=top >
@@ -463,7 +404,6 @@ postgres -D /var/lib/postgres/data
         hasInnerContainers: true,
     });
 </script>
-
 
   </body>
 </html>

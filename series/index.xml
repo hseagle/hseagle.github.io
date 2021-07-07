@@ -20,12 +20,39 @@
     </item>
     
     <item>
+      <title>PG索引概述</title>
+      <link>https://hseagle.github.io/2021/07/pg-indexes/</link>
+      <pubDate>Mon, 05 Jul 2021 17:12:50 +0800</pubDate>
+      
+      <guid>https://hseagle.github.io/2021/07/pg-indexes/</guid>
+      <description>&lt;p&gt;PostgreSQL支持多种索引类型， 在不同场景下，选用合适的索引，会极大的提升查询和分析性能。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Patroni--首选的PG HA方案</title>
       <link>https://hseagle.github.io/2021/07/patroni/</link>
       <pubDate>Mon, 05 Jul 2021 16:20:43 +0800</pubDate>
       
       <guid>https://hseagle.github.io/2021/07/patroni/</guid>
       <description>&lt;p&gt;PostgreSQL有多种高可用的方案选择，在功能性和易用性两者平衡的角度来看, Patroni无疑是最成功的一款，本节会主要介绍一下patroni的安装配置和其背后基本原理。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Citus扩展</title>
+      <link>https://hseagle.github.io/2021/07/pg-extension-citus/</link>
+      <pubDate>Mon, 05 Jul 2021 16:14:46 +0800</pubDate>
+      
+      <guid>https://hseagle.github.io/2021/07/pg-extension-citus/</guid>
+      <description>&lt;p&gt;Citus是PostgreSQL目前已知水平扩容的插件中最成功的一款， 而且在2019年微软收购了该公司，足以证明该扩展的成功和流行，收购后citus的功能依然保持开源，所以这是一款值得使用并同时值得花时间研究的软件。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>SQL查询性能优化</title>
+      <link>https://hseagle.github.io/2021/07/pg-sql-optimization/</link>
+      <pubDate>Mon, 05 Jul 2021 14:29:27 +0800</pubDate>
+      
+      <guid>https://hseagle.github.io/2021/07/pg-sql-optimization/</guid>
+      <description>&lt;p&gt;SQL查询性能优化方法汇总&lt;/p&gt;</description>
     </item>
     
     <item>
