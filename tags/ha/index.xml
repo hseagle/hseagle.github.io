@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ha on PG极简运维</title>
+    <link>https://example.com/tags/ha/</link>
+    <description>Recent content in ha on PG极简运维</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>CC BY 4.0 CN</copyright>
+    <lastBuildDate>Mon, 05 Jul 2021 16:20:43 +0800</lastBuildDate>
+    
+        <atom:link href="https://example.com/tags/ha/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Patroni--首选的PG HA方案</title>
+      <link>https://example.com/2021/07/patroni/</link>
+      <pubDate>Mon, 05 Jul 2021 16:20:43 +0800</pubDate>
+      
+      <guid>https://example.com/2021/07/patroni/</guid>
+      <description>&lt;p&gt;PostgreSQL有多种高可用的方案选择，在功能性和易用性两者平衡的角度来看, Patroni无疑是最成功的一款，本节会主要介绍一下patroni的安装配置和其背后基本原理。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>PostgreSQL安装和运行</title>
+      <link>https://example.com/2021/07/pg-install/</link>
+      <pubDate>Mon, 05 Jul 2021 12:43:24 +0800</pubDate>
+      
+      <guid>https://example.com/2021/07/pg-install/</guid>
+      <description>&lt;p&gt;本节涉及PostgreSQL的安装和运行， PostgreSQL历史悠久，Linux的各大发行版都对其支持友好，基本上都有编译好的二进制包直接可供下载安装。如果想亲自体验一下PostgreSQL的源码编译过程，那么就下载源码进行DIY，过程也不复杂。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>楔子</title>
+      <link>https://example.com/2021/07/my-first-post/</link>
+      <pubDate>Mon, 05 Jul 2021 12:23:19 +0800</pubDate>
+      
+      <guid>https://example.com/2021/07/my-first-post/</guid>
+      <description>&lt;p&gt;数据库过去是，现在是，将来肯定也是互联网技术中的热点和重点( &lt;strong&gt;有押注的意味&lt;/strong&gt; ), 在开源数据中，以功能论PostgreSQL无疑是最强的，自从2014年以来，在db-engines.com排名中始终稳定在第4,声誉积分不断抬升，和SqlServer积分不断下滑趋势相比，很有可能在2-3年后， PostgreSQL会进入排名的top3。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
