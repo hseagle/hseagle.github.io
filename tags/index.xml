@@ -6,7 +6,7 @@
     <description>Recent content in Tags on PG极简运维</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>CC BY 4.0 CN</copyright>
-    <lastBuildDate>Mon, 05 Jul 2021 17:12:50 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 05 Jul 2021 16:20:43 +0800</lastBuildDate>
     
         <atom:link href="https://hseagle.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
@@ -18,15 +18,6 @@
       
       <guid>https://hseagle.github.io/2021/07/pg-locks/</guid>
       <description>&lt;p&gt;PostgreSQL中锁机制及其原理&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>PG索引概述</title>
-      <link>https://hseagle.github.io/2021/07/pg-indexes/</link>
-      <pubDate>Mon, 05 Jul 2021 17:12:50 +0800</pubDate>
-      
-      <guid>https://hseagle.github.io/2021/07/pg-indexes/</guid>
-      <description>&lt;p&gt;PostgreSQL支持多种索引类型， 在不同场景下，选用合适的索引，会极大的提升查询和分析性能。&lt;/p&gt;</description>
     </item>
     
     <item>

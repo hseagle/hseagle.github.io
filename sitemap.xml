@@ -24,34 +24,6 @@
   </url>
   
   <url>
-    <loc>https://hseagle.github.io/tags/index/</loc>
-    <lastmod>2021-07-05T17:12:50+08:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://hseagle.github.io/2021/07/pg-indexes/</loc>
-    <lastmod>2021-07-05T17:12:50+08:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://hseagle.github.io/tags/</loc>
-    <lastmod>2021-07-05T17:12:50+08:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://hseagle.github.io/tags/%E7%B4%A2%E5%BC%95/</loc>
-    <lastmod>2021-07-05T17:12:50+08:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>https://hseagle.github.io/tags/ha/</loc>
     <lastmod>2021-07-05T16:20:43+08:00</lastmod>
     <changefreq>monthly</changefreq>
@@ -60,6 +32,13 @@
   
   <url>
     <loc>https://hseagle.github.io/2021/07/patroni/</loc>
+    <lastmod>2021-07-05T16:20:43+08:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://hseagle.github.io/tags/</loc>
     <lastmod>2021-07-05T16:20:43+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
