@@ -40,7 +40,7 @@
 <meta itemprop="name" content="PostgreSQL安装和运行">
 <meta itemprop="description" content="本节涉及PostgreSQL的安装和运行， PostgreSQL历史悠久，Linux的各大发行版都对其支持友好，基本上都有编译好的二进制包直接可供下载安装。如果想亲自体验一下PostgreSQL的源码编译过程，那么就下载源码进行DIY，过程也不复杂。"><meta itemprop="datePublished" content="2021-07-05T12:43:24+08:00" />
 <meta itemprop="dateModified" content="2021-07-05T12:43:24+08:00" />
-<meta itemprop="wordCount" content="153">
+<meta itemprop="wordCount" content="540">
 <meta itemprop="keywords" content="postgresql," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="PostgreSQL安装和运行"/>
 <meta name="twitter:description" content="本节涉及PostgreSQL的安装和运行， PostgreSQL历史悠久，Linux的各大发行版都对其支持友好，基本上都有编译好的二进制包直接可供下载安装。如果想亲自体验一下PostgreSQL的源码编译过程，那么就下载源码进行DIY，过程也不复杂。"/>
@@ -322,18 +322,64 @@ function tagCloud(where, min, max) {
     <a class="article-tag-link" href="/tags/postgresql/"> postgresql </a>
   </span>
 
-		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 1分 </span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 2分 </span>
       </div>
     </div>
     <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
       <p>本节涉及PostgreSQL的安装和运行， PostgreSQL历史悠久，Linux的各大发行版都对其支持友好，基本上都有编译好的二进制包直接可供下载安装。如果想亲自体验一下PostgreSQL的源码编译过程，那么就下载源码进行DIY，过程也不复杂。</p>
 <hr>
 <h1 id="源码安装">源码安装</h1>
-<h1 id="centos下安装">centos下安装</h1>
-<h1 id="运行">运行</h1>
+<h2 id="编译步骤">编译步骤</h2>
+<p>假设已经安装好gcc, g++以及make</p>
+<pre><code class="language-bash">./configure
+make
+sudo make install
+</code></pre>
 <h2 id="初始化">初始化</h2>
-<pre><code class="language-bash">initdb --locale=en_US.UTF-8 -E UTF8 -D /var/lib/postgres/data
-postgres -D /var/lib/postgres/data
+<pre><code class="language-bash">adduser postgres
+mkdir /usr/local/pgsql/data
+chown postgres /usr/local/pgsql/data
+su - postgres
+/usr/local/pgsql/bin/initdb -D /usr/local/pgsql/data
+/usr/local/pgsql/bin/pg_ctl -D /usr/local/pgsql/data -l logfile start
+/usr/local/pgsql/bin/createdb test
+/usr/local/pgsql/bin/psql test
+</code></pre>
+<h2 id="安装结果验证">安装结果验证</h2>
+<pre><code class="language-bash">ps -ef|grep -i post
+sudo netstat -antpl|grep -i 5432
+</code></pre>
+<p>使用默认账户链接</p>
+<pre><code class="language-bash">psql -Upostgres -dpostgres
+</code></pre>
+<h1 id="centos7下安装">CentOS7下安装</h1>
+<pre><code class="language-bash">yum install postgresql13 postgresql13-server
+sudo systemctl enable postgresql-13
+sudo /usr/pgsql-13/bin/postgresql-13-setup initdb
+sudo systemctl start postgresql-13
+</code></pre>
+<h1 id="centos7下离线安装">CentOS7下离线安装</h1>
+<p>以postgresql 13为例，找到安装包下载地址。https://download.postgresql.org/pub/repos/yum/13/redhat/，如果是在linux下可能采用<strong>lftp</strong>打开该地址，执行如下指令下载</p>
+<pre><code class="language-bash">lftp https://download.postgresql.org/pub/repos/yum/13/redhat/rhel-7.12-x86_64/
+mirror . /tmp/pg13_installer
+</code></pre>
+<p>下载完成之后，将安装包上传到目标机器，采用如下指令安装</p>
+<pre><code class="language-bash">sudo yum -y install libicu
+sudo yum -y localinstall postgresql13-libs-13.2-1PGDG.rhel7.x86_64.rpm 
+sudo yum -y localinstall ./postgresql13-13.2-1PGDG.rhel7.x86_64.rpm ./postgresql13-server-13.2-1PGDG.rhel7.x86_64.rpm
+sudo yum -y localinstall postgresql13-contrib-13.2-1PGDG.rhel7.x86_64.rpm
+sudo yum -y localinstall python3-psycopg2-2.8.5-1.rhel7.x86_64.rpm pg_partman_13-4.4.1-1.rhel7.x86_64.rpm pg_repack13-1.4.6-1.rhel7.x86_64.rpm
+</code></pre>
+<p>postgresql默认的数据目录是 <strong>/var/lib/pgsql/13/data</strong>, 如果要更换默认的文件夹， 需要修改文件 <strong>/usr/lib/systemd/system/postgresql-13.service</strong>
+比如下面示例中，就将数据目录更换到 <strong>/pgsql/13/data</strong>。</p>
+<p>如果不更改默认指定目录，可以直接跳到数据库初始化步骤。</p>
+<pre><code class="language-bash">Environment=PGDATA=/pgsql/13/data/
+</code></pre>
+<p>修改完成后执行</p>
+<pre><code class="language-bash">sudo systemctl daemon-reload
+</code></pre>
+<h2 id="数据库初始化">数据库初始化</h2>
+<pre><code class="language-bash">sudo /usr/pgsql-13/bin/postgresql-13-setup initdb
 </code></pre>
 <h1 id="gui">GUI</h1>
 <p><a href="https://www.beekeeperstudio.io/">BeeKeeper</a></p>
