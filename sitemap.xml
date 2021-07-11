@@ -80,15 +80,22 @@
   </url>
   
   <url>
-    <loc>https://hseagle.github.io/categories/postgresql/</loc>
-    <lastmod>2021-07-05T12:43:24+08:00</lastmod>
+    <loc>https://hseagle.github.io/tags/pg%E5%AE%89%E8%A3%85/</loc>
+    <lastmod>2021-07-05T13:14:49+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://hseagle.github.io/tags/postgresql/</loc>
-    <lastmod>2021-07-05T12:43:24+08:00</lastmod>
+    <loc>https://hseagle.github.io/2021/07/pg-remote-access/</loc>
+    <lastmod>2021-07-05T13:14:49+08:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://hseagle.github.io/categories/postgresql/</loc>
+    <lastmod>2021-07-05T13:14:49+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>

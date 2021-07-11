@@ -2,7 +2,8 @@
 <html lang="zh">
   <head>
     <title>
-        PG极简运维</title>
+        PG远程链接 - PG极简运维
+      </title>
         <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport"
@@ -19,25 +20,30 @@
     <meta http-equiv="window-target" content="_top" />
     
     
-    
+    <meta name="description" content="PostgreSQL需要进行简单的配置才能允许用户从远程进行链接，本节会讲述涉及到的主要步骤。
+" />
     <meta name="generator" content="Hugo 0.85.0 with theme pure" />
-    <title>PG极简运维</title>
+    <title>PG远程链接 - PG极简运维</title>
     
-    <link rel="alternate" type="application/rss+xml" href="https://hseagle.github.io/tags/index.xml" title="PG极简运维" />
     
     <link rel="stylesheet" href="https://hseagle.github.io/css/style.min.e64d754037c0ee0ec4e20ab1d6f07740ace61729bc03850559b8caa21ae4a597.css">
     
     <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
-    <meta property="og:title" content="Tags" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://hseagle.github.io/tags/" />
+    <meta property="og:title" content="PG远程链接" />
+<meta property="og:description" content="PostgreSQL需要进行简单的配置才能允许用户从远程进行链接，本节会讲述涉及到的主要步骤。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://hseagle.github.io/2021/07/pg-remote-access/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-07-05T13:14:49+08:00" />
+<meta property="article:modified_time" content="2021-07-05T13:14:49+08:00" />
 
-<meta itemprop="name" content="Tags">
-<meta itemprop="description" content=""><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Tags"/>
-<meta name="twitter:description" content=""/>
+<meta itemprop="name" content="PG远程链接">
+<meta itemprop="description" content="PostgreSQL需要进行简单的配置才能允许用户从远程进行链接，本节会讲述涉及到的主要步骤。"><meta itemprop="datePublished" content="2021-07-05T13:14:49+08:00" />
+<meta itemprop="dateModified" content="2021-07-05T13:14:49+08:00" />
+<meta itemprop="wordCount" content="371">
+<meta itemprop="keywords" content="PG安装," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="PG远程链接"/>
+<meta name="twitter:description" content="PostgreSQL需要进行简单的配置才能允许用户从远程进行链接，本节会讲述涉及到的主要步骤。"/>
 
     <!--[if lte IE 9]>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -278,102 +284,135 @@ function tagCloud(where, min, max) {
 
     
     
-<main class="main" role="main">
-    <article class="article article-tags post-type-list" itemscope="">
-        <header class="article-header">
-            <h1 itemprop="name" class="hidden-xs">Tags</h1>
-            <p class="text-muted hidden-xs">共 3 个标签</p>
-            <nav role="navigation" id="nav-main" class="okayNav">
-                <ul>
-                    <li><a href="https://hseagle.github.io/tags">All</a></li>
-                    <li><a href="https://hseagle.github.io/tags/citus/">citus</a></li>
-                    <li><a href="https://hseagle.github.io/tags/ha/">ha</a></li>
-                    <li><a href="https://hseagle.github.io/tags/pg%E5%AE%89%E8%A3%85/">PG安装</a></li>
-                </ul>
-            </nav>
-        </header>
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/2021/07/pg-remote-access/"
+    >PG远程链接</a
+  >
+</h1>
+
+      <div class="article-meta">
         
-        <div class="article-body">
-            <h3 class="panel-title mb-1x">
-                <a href="https://hseagle.github.io/tags/citus" title="#citus"># citus</a>
-                <small class="text-muted">(Total1 articles)</small>
-            </h3>
-            <div class="row">
-                <div class="col-md-6"><article class="panel panel-default hover-shadow hover-grow" itemscope itemtype="http://schema.org/BlogPosting">
-    <div class="panel-body">
-        <div class="article-meta">
-            <time datetime="2021-07-05 16:14:46 &#43;0800 CST"
-                itemprop="datePublished">2021-07-05</time>
+<span class="article-date">
+  <i class="icon icon-calendar-check"></i>&nbsp;
+<a href="https://hseagle.github.io/2021/07/pg-remote-access/" class="article-date">
+  <time datetime="2021-07-05 13:14:49 &#43;0800 CST" itemprop="datePublished">2021-07-05</time>
+</a>
+</span>
+<span class="article-category">
+  <i class="icon icon-folder"></i>&nbsp;
+  <a class="article-category-link" href="/categories/postgresql/"> PostgreSQL </a>
+</span>  
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>&nbsp;
+    <a class="article-tag-link" href="/tags/pg%E5%AE%89%E8%A3%85/"> PG安装 </a>
+  </span>
+
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 1分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <p>PostgreSQL需要进行简单的配置才能允许用户从远程进行链接，本节会讲述涉及到的主要步骤。</p>
+<h1 id="用户创建">用户创建</h1>
+<pre><code class="language-sql">create user birobot with encrypted password '123456';
+</code></pre>
+<p>上述语句创建了用户<strong>bitrobot</strong>, 密码设置为<strong>123456</strong></p>
+<h1 id="修改postgresql服务器监听地址">修改PostgreSQL服务器监听地址</h1>
+<p>打开<strong>postgresql.conf</strong>, 将监听地址修改为要监听的IP地址， &lsquo;*&lsquo;表示对所有的ip进行监听, 初始化安装时默认的监听地址是<strong>localhost</strong>。</p>
+<pre><code class="language-ini">listen_address = '*'
+</code></pre>
+<h1 id="修改pg_hbaconf">修改pg_hba.conf</h1>
+<p><strong>pg_hba.conf</strong> 文件用于设置用户可以从哪里进行访问，以及允许的认证方式是啥。</p>
+<pre><code>#type   database    user    address             method
+host    all         all     192.168.56.0/24     trust
+host    all         all     192.168.0.0/16      md5
+</code></pre>
+<p>上述两条配置的含义解释如下</p>
+<ol>
+<li>允许用户从子网192.168.56.0/24的网段进行访问，不需要密码验证</li>
+<li>允许用户从子网192.168.0.0/16网段进行访问，需要进行密码验证</li>
+</ol>
+<p>先定义的规则先生效，后续无法覆盖。</p>
+<h1 id="远程链接测试">远程链接测试</h1>
+<pre><code class="language-bash">psql -Upostgres -dpostgres -h 192.158.56.112 -p 5432
+</code></pre>
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="https://hseagle.github.io/2021/07/pg-remote-access/" title="PG远程链接" target="_blank" rel="external">https://hseagle.github.io/2021/07/pg-remote-access/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License: </strong>
+        <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="/" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://hseagle.github.io/qiandaohu.png" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="/" target="_blank"><span class="text-dark">被程序截胡的段子手</span><small class="ml-1x"></small></a></h3>
+        <div>非典型文青</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+    </div>
+  </article>
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="https://hseagle.github.io/2021/07/pg-install/" title="PostgreSQL安装和运行"><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="https://hseagle.github.io/2021/07/pg-sql-optimization/"
+                    title="SQL查询性能优化"><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
         </div>
-        <h3 class="article-title" itemprop="name">
-            <a class="article-link" href="https://hseagle.github.io/2021/07/pg-extension-citus/">Citus扩展</a>
-        </h3>
     </div>
-    <div class="panel-footer">
-        <a href="https://hseagle.github.io/tags/citus" class="label label-default mb">citus</a>
-    </div>
-</article>
-                </div>
-            </div>
-            <h3 class="panel-title mb-1x">
-                <a href="https://hseagle.github.io/tags/ha" title="#ha"># ha</a>
-                <small class="text-muted">(Total1 articles)</small>
-            </h3>
-            <div class="row">
-                <div class="col-md-6"><article class="panel panel-default hover-shadow hover-grow" itemscope itemtype="http://schema.org/BlogPosting">
-    <div class="panel-body">
-        <div class="article-meta">
-            <time datetime="2021-07-05 16:20:43 &#43;0800 CST"
-                itemprop="datePublished">2021-07-05</time>
-        </div>
-        <h3 class="article-title" itemprop="name">
-            <a class="article-link" href="https://hseagle.github.io/2021/07/patroni/">Patroni--首选的PG HA方案</a>
-        </h3>
-    </div>
-    <div class="panel-footer">
-        <a href="https://hseagle.github.io/tags/ha" class="label label-default mb">ha</a>
-    </div>
-</article>
-                </div>
-            </div>
-            <h3 class="panel-title mb-1x">
-                <a href="https://hseagle.github.io/tags/pg%E5%AE%89%E8%A3%85" title="#pg安装"># pg安装</a>
-                <small class="text-muted">(Total2 articles)</small>
-            </h3>
-            <div class="row">
-                <div class="col-md-6"><article class="panel panel-default hover-shadow hover-grow" itemscope itemtype="http://schema.org/BlogPosting">
-    <div class="panel-body">
-        <div class="article-meta">
-            <time datetime="2021-07-05 13:14:49 &#43;0800 CST"
-                itemprop="datePublished">2021-07-05</time>
-        </div>
-        <h3 class="article-title" itemprop="name">
-            <a class="article-link" href="https://hseagle.github.io/2021/07/pg-remote-access/">PG远程链接</a>
-        </h3>
-    </div>
-    <div class="panel-footer">
-        <a href="https://hseagle.github.io/tags/pg%E5%AE%89%E8%A3%85" class="label label-default mb">PG安装</a>
-    </div>
-</article>
-                </div>
-                <div class="col-md-6"><article class="panel panel-default hover-shadow hover-grow" itemscope itemtype="http://schema.org/BlogPosting">
-    <div class="panel-body">
-        <div class="article-meta">
-            <time datetime="2021-07-05 12:43:24 &#43;0800 CST"
-                itemprop="datePublished">2021-07-05</time>
-        </div>
-        <h3 class="article-title" itemprop="name">
-            <a class="article-link" href="https://hseagle.github.io/2021/07/pg-install/">PostgreSQL安装和运行</a>
-        </h3>
-    </div>
-    <div class="panel-footer">
-        <a href="https://hseagle.github.io/tags/pg%E5%AE%89%E8%A3%85" class="label label-default mb">PG安装</a>
-    </div>
-</article>
-                </div>
-            </div>
-        </div>
-    </article>
+</nav>
+
+
 </main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
 <ul class="social-links">
     <li><a href="https://hseagle.github.io/" target="_blank" title="github" data-toggle=tooltip data-placement=top >
@@ -451,6 +490,7 @@ function tagCloud(where, min, max) {
         hasInnerContainers: true,
     });
 </script>
+
 
   </body>
 </html>

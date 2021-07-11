@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Categories on PG极简运维</title>
-    <link>https://hseagle.github.io/categories/</link>
-    <description>Recent content in Categories on PG极简运维</description>
+    <title>PG安装 on PG极简运维</title>
+    <link>https://hseagle.github.io/tags/pg%E5%AE%89%E8%A3%85/</link>
+    <description>Recent content in PG安装 on PG极简运维</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>CC BY 4.0 CN</copyright>
-    <lastBuildDate>Mon, 05 Jul 2021 16:14:46 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 05 Jul 2021 13:14:49 +0800</lastBuildDate>
     
-        <atom:link href="https://hseagle.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="https://hseagle.github.io/tags/pg%E5%AE%89%E8%A3%85/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>

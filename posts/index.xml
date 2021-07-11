@@ -48,6 +48,15 @@
     </item>
     
     <item>
+      <title>PG远程链接</title>
+      <link>https://hseagle.github.io/2021/07/pg-remote-access/</link>
+      <pubDate>Mon, 05 Jul 2021 13:14:49 +0800</pubDate>
+      
+      <guid>https://hseagle.github.io/2021/07/pg-remote-access/</guid>
+      <description>&lt;p&gt;PostgreSQL需要进行简单的配置才能允许用户从远程进行链接，本节会讲述涉及到的主要步骤。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>PostgreSQL安装和运行</title>
       <link>https://hseagle.github.io/2021/07/pg-install/</link>
       <pubDate>Mon, 05 Jul 2021 12:43:24 +0800</pubDate>
