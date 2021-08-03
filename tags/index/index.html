@@ -20,7 +20,7 @@
     
     
     
-    <meta name="generator" content="Hugo 0.84.4 with theme pure" />
+    <meta name="generator" content="Hugo 0.85.0 with theme pure" />
     <title>PG极简运维</title>
     
     <link rel="alternate" type="application/rss+xml" href="https://hseagle.github.io/tags/index/index.xml" title="PG极简运维" />
@@ -153,19 +153,23 @@
                class="tag-list-count">1</span></a>
             
             
-            <a href="https://hseagle.github.io/tags/ha/" class="tag-list-link" rel="1">ha<span
-               class="tag-list-count">1</span></a>
+            <a href="https://hseagle.github.io/tags/ha/" class="tag-list-link" rel="2">ha<span
+               class="tag-list-count">2</span></a>
             
             
             <a href="https://hseagle.github.io/tags/index/" class="tag-list-link" rel="1">index<span
                class="tag-list-count">1</span></a>
             
             
-            <a href="https://hseagle.github.io/tags/postgresql/" class="tag-list-link" rel="1">postgresql<span
-               class="tag-list-count">1</span></a>
+            <a href="https://hseagle.github.io/tags/pg%E5%AE%89%E8%A3%85/" class="tag-list-link" rel="2">pg安装<span
+               class="tag-list-count">2</span></a>
             
             
             <a href="https://hseagle.github.io/tags/%E7%B4%A2%E5%BC%95/" class="tag-list-link" rel="1">索引<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://hseagle.github.io/tags/%E9%AB%98%E5%8F%AF%E7%94%A8/" class="tag-list-link" rel="1">高可用<span
                class="tag-list-count">1</span></a>
             
     </div>
@@ -198,7 +202,8 @@ function tagCloud(where, min, max) {
     <div class="widget-body">
         <ul class="category-list">
             <li class="category-list-item"><a href="https://hseagle.github.io/categories/citus/" class="category-list-link">citus</a><span class="category-list-count">1</span></li>
-            <li class="category-list-item"><a href="https://hseagle.github.io/categories/postgresql/" class="category-list-link">postgresql</a><span class="category-list-count">1</span></li>
+            <li class="category-list-item"><a href="https://hseagle.github.io/categories/patroni/" class="category-list-link">patroni</a><span class="category-list-count">1</span></li>
+            <li class="category-list-item"><a href="https://hseagle.github.io/categories/postgresql/" class="category-list-link">postgresql</a><span class="category-list-count">3</span></li>
         </ul>
     </div>
 </div>
@@ -213,18 +218,22 @@ function tagCloud(where, min, max) {
             
             
             <li class="tag-list-item"><a href="https://hseagle.github.io/tags/ha/" class="tag-list-link">ha</a><span
-                    class="tag-list-count">1</span></li>
+                    class="tag-list-count">2</span></li>
             
             
             <li class="tag-list-item"><a href="https://hseagle.github.io/tags/index/" class="tag-list-link">index</a><span
                     class="tag-list-count">1</span></li>
             
             
-            <li class="tag-list-item"><a href="https://hseagle.github.io/tags/postgresql/" class="tag-list-link">postgresql</a><span
-                    class="tag-list-count">1</span></li>
+            <li class="tag-list-item"><a href="https://hseagle.github.io/tags/pg%E5%AE%89%E8%A3%85/" class="tag-list-link">pg安装</a><span
+                    class="tag-list-count">2</span></li>
             
             
             <li class="tag-list-item"><a href="https://hseagle.github.io/tags/%E7%B4%A2%E5%BC%95/" class="tag-list-link">索引</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://hseagle.github.io/tags/%E9%AB%98%E5%8F%AF%E7%94%A8/" class="tag-list-link">高可用</a><span
                     class="tag-list-count">1</span></li>
             
         </ul>
@@ -236,6 +245,36 @@ function tagCloud(where, min, max) {
     <h3 class="widget-title">最新文章</h3>
     <div class="widget-body">
         <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://hseagle.github.io/2021/07/pg-pgbench/" class="title">pgbench使用初步</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2021-07-21 10:24:11 &#43;0800 CST" itemprop="datePublished">2021-07-21</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://hseagle.github.io/2021/07/pg-agenda/" class="title">Pg Agenda</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2021-07-15 13:48:50 &#43;0800 CST" itemprop="datePublished">2021-07-15</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://hseagle.github.io/2021/07/pg-patroni/" class="title">PostgreSQL HA方案之Patroni篇</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2021-07-13 14:07:05 &#43;0800 CST" itemprop="datePublished">2021-07-13</time>
+                    </p>
+                </div>
+            </li>
             <li>
                 <div class="item-inner">
                     <p class="item-title">
@@ -256,36 +295,6 @@ function tagCloud(where, min, max) {
                     </p>
                 </div>
             </li>
-            <li>
-                <div class="item-inner">
-                    <p class="item-title">
-                        <a href="https://hseagle.github.io/2021/07/patroni/" class="title">Patroni--首选的PG HA方案</a>
-                    </p>
-                    <p class="item-date">
-                        <time datetime="2021-07-05 16:20:43 &#43;0800 CST" itemprop="datePublished">2021-07-05</time>
-                    </p>
-                </div>
-            </li>
-            <li>
-                <div class="item-inner">
-                    <p class="item-title">
-                        <a href="https://hseagle.github.io/2021/07/pg-extension-citus/" class="title">Citus扩展</a>
-                    </p>
-                    <p class="item-date">
-                        <time datetime="2021-07-05 16:14:46 &#43;0800 CST" itemprop="datePublished">2021-07-05</time>
-                    </p>
-                </div>
-            </li>
-            <li>
-                <div class="item-inner">
-                    <p class="item-title">
-                        <a href="https://hseagle.github.io/2021/07/pg-sql-optimization/" class="title">SQL查询性能优化</a>
-                    </p>
-                    <p class="item-date">
-                        <time datetime="2021-07-05 14:29:27 &#43;0800 CST" itemprop="datePublished">2021-07-05</time>
-                    </p>
-                </div>
-            </li>
         </ul>
     </div>
 </div>
@@ -298,15 +307,16 @@ function tagCloud(where, min, max) {
     <article class="content article article-tags post-type-list" itemscope="">
         <header class="article-header">
             <h1 itemprop="name" class="hidden-xs">index</h1>
-            <p class="text-muted hidden-xs">共 5 个标签</p>
+            <p class="text-muted hidden-xs">共 6 个标签</p>
             <nav role="navigation" id="nav-main" class="okayNav">
                 <ul>
                     <li><a href="https://hseagle.github.io/tags">All</a></li>
                     <li><a href="https://hseagle.github.io/tags/citus/">citus</a></li>
                     <li><a href="https://hseagle.github.io/tags/ha/">ha</a></li>
                     <li><a href="https://hseagle.github.io/tags/index/">index</a></li>
-                    <li><a href="https://hseagle.github.io/tags/postgresql/">postgresql</a></li>
+                    <li><a href="https://hseagle.github.io/tags/pg%E5%AE%89%E8%A3%85/">PG安装</a></li>
                     <li><a href="https://hseagle.github.io/tags/%E7%B4%A2%E5%BC%95/">索引</a></li>
+                    <li><a href="https://hseagle.github.io/tags/%E9%AB%98%E5%8F%AF%E7%94%A8/">高可用</a></li>
                 </ul>
             </nav>
         </header>

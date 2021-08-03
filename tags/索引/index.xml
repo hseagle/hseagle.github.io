@@ -12,6 +12,33 @@
     
     
     <item>
+      <title>pgbench使用初步</title>
+      <link>https://hseagle.github.io/2021/07/pg-pgbench/</link>
+      <pubDate>Wed, 21 Jul 2021 10:24:11 +0800</pubDate>
+      
+      <guid>https://hseagle.github.io/2021/07/pg-pgbench/</guid>
+      <description>初始化测试库 create database mydb; 创建表 pgbench -Upostgres -i mydb; 测试 pgbench -Upostgres -c 2 -j 2 -t 10000 mydb;</description>
+    </item>
+    
+    <item>
+      <title>Pg Agenda</title>
+      <link>https://hseagle.github.io/2021/07/pg-agenda/</link>
+      <pubDate>Thu, 15 Jul 2021 13:48:50 +0800</pubDate>
+      
+      <guid>https://hseagle.github.io/2021/07/pg-agenda/</guid>
+      <description>&lt;p&gt;记录当天工作日程&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>PostgreSQL HA方案之Patroni篇</title>
+      <link>https://hseagle.github.io/2021/07/pg-patroni/</link>
+      <pubDate>Tue, 13 Jul 2021 14:07:05 +0800</pubDate>
+      
+      <guid>https://hseagle.github.io/2021/07/pg-patroni/</guid>
+      <description>&lt;p&gt;Patroni是PostgreSQL可选的高可用方案中接受度最广的一种，特别是在2.0之后，Patroni可以使用raft协议来解决分布式的一致性问题，减少了对etcd或zookeeper的依赖，大大简化了安装和运维。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>PG死锁检测</title>
       <link>https://hseagle.github.io/2021/07/pg-locks/</link>
       <pubDate>Wed, 07 Jul 2021 19:27:56 +0800</pubDate>
@@ -54,6 +81,15 @@
       
       <guid>https://hseagle.github.io/2021/07/pg-sql-optimization/</guid>
       <description>&lt;p&gt;SQL查询性能优化方法汇总&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>PG远程链接</title>
+      <link>https://hseagle.github.io/2021/07/pg-remote-access/</link>
+      <pubDate>Mon, 05 Jul 2021 13:14:49 +0800</pubDate>
+      
+      <guid>https://hseagle.github.io/2021/07/pg-remote-access/</guid>
+      <description>&lt;p&gt;PostgreSQL需要进行简单的配置才能允许用户从远程进行链接，本节会讲述涉及到的主要步骤。&lt;/p&gt;</description>
     </item>
     
     <item>
