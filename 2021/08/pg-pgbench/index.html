@@ -2,7 +2,7 @@
 <html lang="zh">
   <head>
     <title>
-        SQL查询性能优化 - PG极简运维
+        pgbench使用初步 - PG极简运维
       </title>
         <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -20,30 +20,30 @@
     <meta http-equiv="window-target" content="_top" />
     
     
-    <meta name="description" content="SQL查询性能优化方法汇总
+    <meta name="description" content="pgbench是postgresql进行压测的官方工具，熟悉这一工具的使用，对于后续数据库侧配置参数修改带来的影响，提供了客观的数据参考。
 " />
     <meta name="generator" content="Hugo 0.86.0 with theme pure" />
-    <title>SQL查询性能优化 - PG极简运维</title>
+    <title>pgbench使用初步 - PG极简运维</title>
     
     
     <link rel="stylesheet" href="https://hseagle.github.io/css/style.min.e64d754037c0ee0ec4e20ab1d6f07740ace61729bc03850559b8caa21ae4a597.css">
     
     <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
-    <meta property="og:title" content="SQL查询性能优化" />
-<meta property="og:description" content="SQL查询性能优化方法汇总" />
+    <meta property="og:title" content="pgbench使用初步" />
+<meta property="og:description" content="pgbench是postgresql进行压测的官方工具，熟悉这一工具的使用，对于后续数据库侧配置参数修改带来的影响，提供了客观的数据参考。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://hseagle.github.io/2021/07/pg-sql-optimization/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2021-07-05T14:29:27+08:00" />
-<meta property="article:modified_time" content="2021-07-05T14:29:27+08:00" />
+<meta property="og:url" content="https://hseagle.github.io/2021/08/pg-pgbench/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-08-08T15:24:11+08:00" />
+<meta property="article:modified_time" content="2021-08-08T15:24:11+08:00" />
 
-<meta itemprop="name" content="SQL查询性能优化">
-<meta itemprop="description" content="SQL查询性能优化方法汇总"><meta itemprop="datePublished" content="2021-07-05T14:29:27+08:00" />
-<meta itemprop="dateModified" content="2021-07-05T14:29:27+08:00" />
-<meta itemprop="wordCount" content="13">
+<meta itemprop="name" content="pgbench使用初步">
+<meta itemprop="description" content="pgbench是postgresql进行压测的官方工具，熟悉这一工具的使用，对于后续数据库侧配置参数修改带来的影响，提供了客观的数据参考。"><meta itemprop="datePublished" content="2021-08-08T15:24:11+08:00" />
+<meta itemprop="dateModified" content="2021-08-08T15:24:11+08:00" />
+<meta itemprop="wordCount" content="226">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="SQL查询性能优化"/>
-<meta name="twitter:description" content="SQL查询性能优化方法汇总"/>
+<meta name="twitter:title" content="pgbench使用初步"/>
+<meta name="twitter:description" content="pgbench是postgresql进行压测的官方工具，熟悉这一工具的使用，对于后续数据库侧配置参数修改带来的影响，提供了客观的数据参考。"/>
 
     <!--[if lte IE 9]>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -300,8 +300,8 @@ function tagCloud(where, min, max) {
       <h1 itemprop="name">
   <a
     class="article-title"
-    href="/2021/07/pg-sql-optimization/"
-    >SQL查询性能优化</a
+    href="/2021/08/pg-pgbench/"
+    >pgbench使用初步</a
   >
 </h1>
 
@@ -309,8 +309,8 @@ function tagCloud(where, min, max) {
         
 <span class="article-date">
   <i class="icon icon-calendar-check"></i>&nbsp;
-<a href="https://hseagle.github.io/2021/07/pg-sql-optimization/" class="article-date">
-  <time datetime="2021-07-05 14:29:27 &#43;0800 CST" itemprop="datePublished">2021-07-05</time>
+<a href="https://hseagle.github.io/2021/08/pg-pgbench/" class="article-date">
+  <time datetime="2021-08-08 15:24:11 &#43;0800 CST" itemprop="datePublished">2021-08-08</time>
 </a>
 </span>
 
@@ -319,15 +319,39 @@ function tagCloud(where, min, max) {
       </div>
     </div>
     <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
-      <p>SQL查询性能优化方法汇总</p>
-<hr>
+      <p>pgbench是postgresql进行压测的官方工具，熟悉这一工具的使用，对于后续数据库侧配置参数修改带来的影响，提供了客观的数据参考。</p>
+<h1 id="初始化测试库">初始化测试库</h1>
+<pre><code class="language-sql">create database mydb;
+</code></pre>
+<h1 id="创建表">创建表</h1>
+<pre><code class="language-bash">pgbench -Upostgres -i mydb;
+</code></pre>
+<h1 id="测试">测试</h1>
+<pre><code class="language-bash">pgbench -Upostgres -c 2 -j 2 -t 10000 mydb;
+</code></pre>
+<p>注释:</p>
+<ol>
+<li>-c 建立链接数</li>
+<li>-j 启动的线程数，在pgbench中启动多个线程</li>
+<li>-t 进行多少的transaction</li>
+<li>-T 测试进行多少时间， -T和-t是互斥选项，只能二选一</li>
+<li>-P 多少秒打印一次信息</li>
+</ol>
+<h1 id="只进行select测试">只进行select测试</h1>
+<pre><code class="language-bash">pgbench -Upostgres -c2 -j2 -T 120 -P5 -S -n
+</code></pre>
+<p>注释</p>
+<ol>
+<li>-S 只进行query测试</li>
+<li>-n 跳过初始的vacuum</li>
+</ol>
     </div>
     <div class="article-footer">
 <blockquote class="mt-2x">
   <ul class="post-copyright list-unstyled">
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接: </strong>
-      <a href="https://hseagle.github.io/2021/07/pg-sql-optimization/" title="SQL查询性能优化" target="_blank" rel="external">https://hseagle.github.io/2021/07/pg-sql-optimization/</a>
+      <a href="https://hseagle.github.io/2021/08/pg-pgbench/" title="pgbench使用初步" target="_blank" rel="external">https://hseagle.github.io/2021/08/pg-pgbench/</a>
     </li>
     <li class="post-copyright-license">
       <strong>License: </strong>
@@ -358,14 +382,9 @@ function tagCloud(where, min, max) {
     <div class="bar-inner">
         <ul class="pager pull-left">
             <li class="prev">
-                <a href="https://hseagle.github.io/2021/07/pg-remote-access/" title="PG远程链接"><i
+                <a href="https://hseagle.github.io/2021/07/pg-locks/" title="PG死锁检测"><i
                         class="icon icon-angle-left"
                         aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
-            </li>
-            <li class="next">
-                <a href="https://hseagle.github.io/2021/07/pg-extension-citus/"
-                    title="Citus扩展"><span>上一篇&nbsp;&nbsp;</span><i
-                        class="icon icon-angle-right" aria-hidden="true"></i></a>
             </li>
             
             <li class="toggle-toc">
