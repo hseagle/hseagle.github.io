@@ -2,7 +2,8 @@
 <html lang="zh">
   <head>
     <title>
-        PG极简运维</title>
+        PostgreSQL中的数据膨胀由来及对策 - PG极简运维
+      </title>
         <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport"
@@ -19,25 +20,30 @@
     <meta http-equiv="window-target" content="_top" />
     
     
-    
+    <meta name="description" content="PostgreSQL是一款MVCC数据库，它的实现机制不同于Oracle和MySQL中的MVCC实现。PG中的实现机制好处是更新和删除效率高，速度快; 负面的效果是需要定期进行数据清理，不然会有数据大量的数据膨胀。
+" />
     <meta name="generator" content="Hugo 0.87.0 with theme pure" />
-    <title>PG极简运维</title>
+    <title>PostgreSQL中的数据膨胀由来及对策 - PG极简运维</title>
     
-    <link rel="alternate" type="application/rss+xml" href="https://hseagle.github.io/tags/ha/index.xml" title="PG极简运维" />
     
     <link rel="stylesheet" href="https://hseagle.github.io/css/style.min.e64d754037c0ee0ec4e20ab1d6f07740ace61729bc03850559b8caa21ae4a597.css">
     
     <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
-    <meta property="og:title" content="ha" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://hseagle.github.io/tags/ha/" />
+    <meta property="og:title" content="PostgreSQL中的数据膨胀由来及对策" />
+<meta property="og:description" content="PostgreSQL是一款MVCC数据库，它的实现机制不同于Oracle和MySQL中的MVCC实现。PG中的实现机制好处是更新和删除效率高，速度快; 负面的效果是需要定期进行数据清理，不然会有数据大量的数据膨胀。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://hseagle.github.io/2021/08/pg-mvcc/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-08-14T14:19:10+08:00" />
+<meta property="article:modified_time" content="2021-08-14T14:19:10+08:00" />
 
-<meta itemprop="name" content="ha">
-<meta itemprop="description" content=""><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="ha"/>
-<meta name="twitter:description" content=""/>
+<meta itemprop="name" content="PostgreSQL中的数据膨胀由来及对策">
+<meta itemprop="description" content="PostgreSQL是一款MVCC数据库，它的实现机制不同于Oracle和MySQL中的MVCC实现。PG中的实现机制好处是更新和删除效率高，速度快; 负面的效果是需要定期进行数据清理，不然会有数据大量的数据膨胀。"><meta itemprop="datePublished" content="2021-08-14T14:19:10+08:00" />
+<meta itemprop="dateModified" content="2021-08-14T14:19:10+08:00" />
+<meta itemprop="wordCount" content="735">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="PostgreSQL中的数据膨胀由来及对策"/>
+<meta name="twitter:description" content="PostgreSQL是一款MVCC数据库，它的实现机制不同于Oracle和MySQL中的MVCC实现。PG中的实现机制好处是更新和删除效率高，速度快; 负面的效果是需要定期进行数据清理，不然会有数据大量的数据膨胀。"/>
 
     <!--[if lte IE 9]>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -278,39 +284,154 @@ function tagCloud(where, min, max) {
 
     
     
-<main class="main" role="main">
-    <article class="content article article-tags post-type-list" itemscope="">
-        <header class="article-header">
-            <h1 itemprop="name" class="hidden-xs">ha</h1>
-            <p class="text-muted hidden-xs">共 3 个标签</p>
-            <nav role="navigation" id="nav-main" class="okayNav">
-                <ul>
-                    <li><a href="https://hseagle.github.io/tags">All</a></li>
-                    <li><a href="https://hseagle.github.io/tags/citus/">citus</a></li>
-                    <li><a href="https://hseagle.github.io/tags/ha/">ha</a></li>
-                    <li><a href="https://hseagle.github.io/tags/pg%E5%AE%89%E8%A3%85/">PG安装</a></li>
-                </ul>
-            </nav>
-        </header>
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/2021/08/pg-mvcc/"
+    >PostgreSQL中的数据膨胀由来及对策</a
+  >
+</h1>
+
+      <div class="article-meta">
         
-        <div class="article-body">
-            <div class="col-md-6"><article class="panel panel-default hover-shadow hover-grow" itemscope itemtype="http://schema.org/BlogPosting">
-    <div class="panel-body">
-        <div class="article-meta">
-            <time datetime="2021-07-05 16:20:43 &#43;0800 CST"
-                itemprop="datePublished">2021-07-05</time>
-        </div>
-        <h3 class="article-title" itemprop="name">
-            <a class="article-link" href="https://hseagle.github.io/2021/07/patroni/">Patroni--首选的PG HA方案</a>
-        </h3>
+<span class="article-date">
+  <i class="icon icon-calendar-check"></i>&nbsp;
+<a href="https://hseagle.github.io/2021/08/pg-mvcc/" class="article-date">
+  <time datetime="2021-08-14 14:19:10 &#43;0800 CST" itemprop="datePublished">2021-08-14</time>
+</a>
+</span>
+
+
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 2分 </span>
+      </div>
     </div>
-    <div class="panel-footer">
-        <a href="https://hseagle.github.io/tags/ha" class="label label-default mb">ha</a>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <p>PostgreSQL是一款MVCC数据库，它的实现机制不同于Oracle和MySQL中的MVCC实现。PG中的实现机制好处是更新和删除效率高，速度快; 负面的效果是需要定期进行数据清理，不然会有数据大量的数据膨胀。</p>
+<h2 id="原理">原理</h2>
+<p><img src="/pg_autovacuum_internal.png" alt="数据删除原理图"></p>
+<pre><code class="language-sql">create extension pageinspect;
+create table person(name varchar(64), age int);
+insert into person values('andrew', 22);
+select xmin, xmax, cmin, cmax, * from person;
+</code></pre>
+<p>当插入一条记录到PostgreSQL表中，系统字段xmax为0, 如果对应的记录被删除或修改，那么该字段为非0,写入的是执行该操作的transaction id, 借助于pageinspect模块，我们可以看到物理页中的真正内容。</p>
+<pre><code class="language-sql">create extension if not exists pageinspect;
+SELECT t_xmin, t_xmax, tuple_data_split('scott.employee'::regclass, t_data, t_infomask, t_infomask2, t_bits) FROM heap_page_items(get_raw_page('scott.employee', 0));
+</code></pre>
+<p>借助于pageinspect, 可以做一个简单试验，看修改记录后，表的物理页中真正的记录形式如何。</p>
+<pre><code class="language-sql">mydb=# insert into person values('andrew', 24);
+INSERT 0 1
+mydb=# SELECT t_xmin, t_xmax, tuple_data_split('person'::regclass, t_data, t_infomask, t_infomask2, t_bits) FROM heap_page_items(get_raw_page('person', 0));
+ t_xmin  | t_xmax |          tuple_data_split           
+---------+--------+-------------------------------------
+ 7397512 |      0 | {&quot;\\x0f616e64726577&quot;,&quot;\\x18000000&quot;}
+(1 行记录)
+
+mydb=# update person set age = 25 where name = 'andrew';
+UPDATE 1
+mydb=# SELECT t_xmin, t_xmax, tuple_data_split('person'::regclass, t_data, t_infomask, t_infomask2, t_bits) FROM heap_page_items(get_raw_page('person', 0));
+ t_xmin  | t_xmax  |          tuple_data_split           
+---------+---------+-------------------------------------
+ 7397512 | 7397513 | {&quot;\\x0f616e64726577&quot;,&quot;\\x18000000&quot;}
+ 7397513 |       0 | {&quot;\\x0f616e64726577&quot;,&quot;\\x19000000&quot;}
+(2 行记录)
+</code></pre>
+<p>输出结果表明，update操作不会在原有记录上进行修改，而是将原有记录置为无效(xmax设置为非零值)，然后重新写入一条全新记录。</p>
+<h2 id="监控">监控</h2>
+<p>查看用户表中垃圾记录的数量，并计算和有效记录的比值。</p>
+<pre><code class="language-sql">select relname, n_live_tup, n_dead_tup, round(n_dead_tup*1.0/n_live_tup, 2) as dead_ratio from pg_stat_user_tables where n_live_tup &gt; 0
+</code></pre>
+<pre><code class="language-console">mydb-# ;
+       relname        | n_live_tup | n_dead_tup | dead_ratio 
+----------------------+------------+------------+------------
+ db_sync_cfg_database |          1 |          0 |       0.00
+ db_sync_cfg_table    |          3 |          1 |       0.33
+(2 行记录)
+</code></pre>
+<h2 id="调优">调优</h2>
+<p>触发autovacuum的条件</p>
+<pre><code>pg_stat_user_tables.n_dead_tup &gt; (threshold + pg_class.reltuples * scale_factor)
+</code></pre>
+<p>为了尽早触发autovacuum, 可以针对表级别，修改autovacuum配置</p>
+<pre><code class="language-sql">alter table demo set (autovacuum_vacuum_threshold_size=0);
+alter table demo set (autovacuum_vacuum_scale_factor=0.02);
+</code></pre>
+<p><strong>autovacuum_vacuum_cost_limit</strong> autovacuum会带来额外的i/o开销，提升系统负载，对数据库系统的稳定性带来潜在影响，所以PostgreSQL针对autovacuum是有相应的限流设置, 相关的参数有两个</p>
+<pre><code class="language-ini">autovacuum_vacuum_cost_delay
+autovacuum_vacuum_cost_limit
+</code></pre>
+<p>一般不建议更改 <strong>autovacuum_vacuum_cost_delay</strong>, 可以把默认的 <strong>autovacuum_vacuum_cost_limit</strong> 更改为大一点的值，允许触发和执行更多的autovacuum活动。</p>
     </div>
-</article>
-            </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="https://hseagle.github.io/2021/08/pg-mvcc/" title="PostgreSQL中的数据膨胀由来及对策" target="_blank" rel="external">https://hseagle.github.io/2021/08/pg-mvcc/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License: </strong>
+        <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="/" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://hseagle.github.io/qiandaohu.png" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="/" target="_blank"><span class="text-dark">被程序截胡的段子手</span><small class="ml-1x"></small></a></h3>
+        <div>非典型文青</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+    </div>
+  </article>
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="https://hseagle.github.io/2021/08/pg-pgbench/" title="pgbench使用初步"><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
         </div>
-    </article>
+    </div>
+</nav>
+
+
 </main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
 <ul class="social-links">
     <li><a href="https://hseagle.github.io/" target="_blank" title="github" data-toggle=tooltip data-placement=top >
@@ -388,6 +509,7 @@ function tagCloud(where, min, max) {
         hasInnerContainers: true,
     });
 </script>
+
 
   </body>
 </html>

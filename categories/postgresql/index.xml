@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>PostgreSQL中的数据膨胀由来及对策</title>
+      <link>https://hseagle.github.io/2021/08/pg-mvcc/</link>
+      <pubDate>Sat, 14 Aug 2021 14:19:10 +0800</pubDate>
+      
+      <guid>https://hseagle.github.io/2021/08/pg-mvcc/</guid>
+      <description>&lt;p&gt;PostgreSQL是一款MVCC数据库，它的实现机制不同于Oracle和MySQL中的MVCC实现。PG中的实现机制好处是更新和删除效率高，速度快; 负面的效果是需要定期进行数据清理，不然会有数据大量的数据膨胀。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>pgbench使用初步</title>
       <link>https://hseagle.github.io/2021/08/pg-pgbench/</link>
       <pubDate>Sun, 08 Aug 2021 15:24:11 +0800</pubDate>
