@@ -20,7 +20,7 @@
     
     
     
-    <meta name="generator" content="Hugo 0.87.0 with theme pure" />
+    <meta name="generator" content="Hugo 0.88.1 with theme pure" />
     <title>PG极简运维</title>
     
     <link rel="alternate" type="application/rss+xml" href="https://hseagle.github.io/tags/citus/index.xml" title="PG极简运维" />
@@ -153,12 +153,16 @@
                class="tag-list-count">1</span></a>
             
             
-            <a href="https://hseagle.github.io/tags/ha/" class="tag-list-link" rel="1">ha<span
-               class="tag-list-count">1</span></a>
+            <a href="https://hseagle.github.io/tags/ha/" class="tag-list-link" rel="2">ha<span
+               class="tag-list-count">2</span></a>
             
             
             <a href="https://hseagle.github.io/tags/pg%E5%AE%89%E8%A3%85/" class="tag-list-link" rel="2">pg安装<span
                class="tag-list-count">2</span></a>
+            
+            
+            <a href="https://hseagle.github.io/tags/%E9%AB%98%E5%8F%AF%E7%94%A8/" class="tag-list-link" rel="1">高可用<span
+               class="tag-list-count">1</span></a>
             
     </div>
 <script>
@@ -190,7 +194,9 @@ function tagCloud(where, min, max) {
     <div class="widget-body">
         <ul class="category-list">
             <li class="category-list-item"><a href="https://hseagle.github.io/categories/citus/" class="category-list-link">citus</a><span class="category-list-count">1</span></li>
-            <li class="category-list-item"><a href="https://hseagle.github.io/categories/postgresql/" class="category-list-link">postgresql</a><span class="category-list-count">2</span></li>
+            <li class="category-list-item"><a href="https://hseagle.github.io/categories/patroni/" class="category-list-link">patroni</a><span class="category-list-count">1</span></li>
+            <li class="category-list-item"><a href="https://hseagle.github.io/categories/postgresql/" class="category-list-link">postgresql</a><span class="category-list-count">3</span></li>
+            <li class="category-list-item"><a href="https://hseagle.github.io/categories/raft/" class="category-list-link">raft</a><span class="category-list-count">1</span></li>
         </ul>
     </div>
 </div>
@@ -205,11 +211,15 @@ function tagCloud(where, min, max) {
             
             
             <li class="tag-list-item"><a href="https://hseagle.github.io/tags/ha/" class="tag-list-link">ha</a><span
-                    class="tag-list-count">1</span></li>
+                    class="tag-list-count">2</span></li>
             
             
             <li class="tag-list-item"><a href="https://hseagle.github.io/tags/pg%E5%AE%89%E8%A3%85/" class="tag-list-link">pg安装</a><span
                     class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://hseagle.github.io/tags/%E9%AB%98%E5%8F%AF%E7%94%A8/" class="tag-list-link">高可用</a><span
+                    class="tag-list-count">1</span></li>
             
         </ul>
 
@@ -220,6 +230,16 @@ function tagCloud(where, min, max) {
     <h3 class="widget-title">最新文章</h3>
     <div class="widget-body">
         <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://hseagle.github.io/2021/10/pg-patroni-raft/" class="title">PostgreSQL HA方案之Patroni[raft]篇</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2021-10-09 15:07:05 &#43;0800 CST" itemprop="datePublished">2021-10-09</time>
+                    </p>
+                </div>
+            </li>
             <li>
                 <div class="item-inner">
                     <p class="item-title">
@@ -260,16 +280,6 @@ function tagCloud(where, min, max) {
                     </p>
                 </div>
             </li>
-            <li>
-                <div class="item-inner">
-                    <p class="item-title">
-                        <a href="https://hseagle.github.io/2021/07/pg-extension-citus/" class="title">Citus扩展</a>
-                    </p>
-                    <p class="item-date">
-                        <time datetime="2021-07-05 16:14:46 &#43;0800 CST" itemprop="datePublished">2021-07-05</time>
-                    </p>
-                </div>
-            </li>
         </ul>
     </div>
 </div>
@@ -282,13 +292,14 @@ function tagCloud(where, min, max) {
     <article class="content article article-tags post-type-list" itemscope="">
         <header class="article-header">
             <h1 itemprop="name" class="hidden-xs">citus</h1>
-            <p class="text-muted hidden-xs">共 3 个标签</p>
+            <p class="text-muted hidden-xs">共 4 个标签</p>
             <nav role="navigation" id="nav-main" class="okayNav">
                 <ul>
                     <li><a href="https://hseagle.github.io/tags">All</a></li>
                     <li><a href="https://hseagle.github.io/tags/citus/">citus</a></li>
                     <li><a href="https://hseagle.github.io/tags/ha/">ha</a></li>
                     <li><a href="https://hseagle.github.io/tags/pg%E5%AE%89%E8%A3%85/">PG安装</a></li>
+                    <li><a href="https://hseagle.github.io/tags/%E9%AB%98%E5%8F%AF%E7%94%A8/">高可用</a></li>
                 </ul>
             </nav>
         </header>

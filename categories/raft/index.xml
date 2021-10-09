@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>高可用 on PG极简运维</title>
-    <link>https://hseagle.github.io/tags/%E9%AB%98%E5%8F%AF%E7%94%A8/</link>
-    <description>Recent content in 高可用 on PG极简运维</description>
+    <title>raft on PG极简运维</title>
+    <link>https://hseagle.github.io/categories/raft/</link>
+    <description>Recent content in raft on PG极简运维</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>CC BY 4.0 CN</copyright>
     <lastBuildDate>Sat, 09 Oct 2021 15:07:05 +0800</lastBuildDate>
     
-        <atom:link href="https://hseagle.github.io/tags/%E9%AB%98%E5%8F%AF%E7%94%A8/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="https://hseagle.github.io/categories/raft/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>

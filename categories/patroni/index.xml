@@ -6,36 +6,36 @@
     <description>Recent content in Patroni on PG极简运维</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>CC BY 4.0 CN</copyright>
-    <lastBuildDate>Tue, 13 Jul 2021 14:07:05 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 09 Oct 2021 15:07:05 +0800</lastBuildDate>
     
         <atom:link href="https://hseagle.github.io/categories/patroni/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>PostgreSQL HA方案之Patroni[raft]篇</title>
+      <link>https://hseagle.github.io/2021/10/pg-patroni-raft/</link>
+      <pubDate>Sat, 09 Oct 2021 15:07:05 +0800</pubDate>
+      
+      <guid>https://hseagle.github.io/2021/10/pg-patroni-raft/</guid>
+      <description>&lt;p&gt;Patroni是PostgreSQL可选的高可用方案中接受度最广的一种，特别是在2.0之后，Patroni可以使用raft协议来解决分布式的一致性问题，减少了对etcd或zookeeper的依赖，大大简化了安装和运维, 本篇介绍如何基于raft来构建一个最简单的HA集群。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>PostgreSQL中的数据膨胀由来及对策</title>
+      <link>https://hseagle.github.io/2021/08/pg-mvcc/</link>
+      <pubDate>Sat, 14 Aug 2021 14:19:10 +0800</pubDate>
+      
+      <guid>https://hseagle.github.io/2021/08/pg-mvcc/</guid>
+      <description>&lt;p&gt;PostgreSQL是一款MVCC数据库，它的实现机制不同于Oracle和MySQL中的MVCC实现。PG中的实现机制好处是更新和删除效率高，速度快; 负面的效果是需要定期进行数据清理，不然会有数据大量的数据膨胀。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>pgbench使用初步</title>
-      <link>https://hseagle.github.io/2021/07/pg-pgbench/</link>
-      <pubDate>Wed, 21 Jul 2021 10:24:11 +0800</pubDate>
+      <link>https://hseagle.github.io/2021/08/pg-pgbench/</link>
+      <pubDate>Sun, 08 Aug 2021 15:24:11 +0800</pubDate>
       
-      <guid>https://hseagle.github.io/2021/07/pg-pgbench/</guid>
-      <description>初始化测试库 create database mydb; 创建表 pgbench -Upostgres -i mydb; 测试 pgbench -Upostgres -c 2 -j 2 -t 10000 mydb;</description>
-    </item>
-    
-    <item>
-      <title>Pg Agenda</title>
-      <link>https://hseagle.github.io/2021/07/pg-agenda/</link>
-      <pubDate>Thu, 15 Jul 2021 13:48:50 +0800</pubDate>
-      
-      <guid>https://hseagle.github.io/2021/07/pg-agenda/</guid>
-      <description>&lt;p&gt;记录当天工作日程&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>PostgreSQL HA方案之Patroni篇</title>
-      <link>https://hseagle.github.io/2021/07/pg-patroni/</link>
-      <pubDate>Tue, 13 Jul 2021 14:07:05 +0800</pubDate>
-      
-      <guid>https://hseagle.github.io/2021/07/pg-patroni/</guid>
-      <description>&lt;p&gt;Patroni是PostgreSQL可选的高可用方案中接受度最广的一种，特别是在2.0之后，Patroni可以使用raft协议来解决分布式的一致性问题，减少了对etcd或zookeeper的依赖，大大简化了安装和运维。&lt;/p&gt;</description>
+      <guid>https://hseagle.github.io/2021/08/pg-pgbench/</guid>
+      <description>&lt;p&gt;pgbench是postgresql进行压测的官方工具，熟悉这一工具的使用，对于后续数据库侧配置参数修改带来的影响，提供了客观的数据参考。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -45,15 +45,6 @@
       
       <guid>https://hseagle.github.io/2021/07/pg-locks/</guid>
       <description>&lt;p&gt;PostgreSQL中锁机制及其原理&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>PG索引概述</title>
-      <link>https://hseagle.github.io/2021/07/pg-indexes/</link>
-      <pubDate>Mon, 05 Jul 2021 17:12:50 +0800</pubDate>
-      
-      <guid>https://hseagle.github.io/2021/07/pg-indexes/</guid>
-      <description>&lt;p&gt;PostgreSQL支持多种索引类型， 在不同场景下，选用合适的索引，会极大的提升查询和分析性能。&lt;/p&gt;</description>
     </item>
     
     <item>
