@@ -6,10 +6,19 @@
     <description>Recent content in Posts on PG极简运维</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>CC BY 4.0 CN</copyright>
-    <lastBuildDate>Sun, 10 Oct 2021 10:14:49 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 10 Oct 2021 15:20:43 +0800</lastBuildDate>
     
         <atom:link href="https://hseagle.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>PostgreSQL应用开发之一 -- 爬取上市公司概况数据</title>
+      <link>https://hseagle.github.io/2021/10/pg-app-stock/</link>
+      <pubDate>Sun, 10 Oct 2021 15:20:43 +0800</pubDate>
+      
+      <guid>https://hseagle.github.io/2021/10/pg-app-stock/</guid>
+      <description>&lt;p&gt;psycopg2是PostgreSQL非常好的Python Client Library, 本文通过爬取上市公司的基础数据来演示如何使用&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>PostgreSQL Server常用配置</title>
