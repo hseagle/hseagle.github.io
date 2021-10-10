@@ -6,10 +6,19 @@
     <description>Recent content in PG安装 on PG极简运维</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>CC BY 4.0 CN</copyright>
-    <lastBuildDate>Mon, 05 Jul 2021 13:14:49 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 10 Oct 2021 10:14:49 +0800</lastBuildDate>
     
         <atom:link href="https://hseagle.github.io/tags/pg%E5%AE%89%E8%A3%85/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>PostgreSQL Server常用配置</title>
+      <link>https://hseagle.github.io/2021/10/pg-server-config/</link>
+      <pubDate>Sun, 10 Oct 2021 10:14:49 +0800</pubDate>
+      
+      <guid>https://hseagle.github.io/2021/10/pg-server-config/</guid>
+      <description>&lt;p&gt;PostgreSQL常用配置简要说明&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>PostgreSQL HA方案之Patroni[raft]篇</title>
