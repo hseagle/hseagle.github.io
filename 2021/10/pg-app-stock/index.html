@@ -40,7 +40,7 @@
 <meta itemprop="name" content="PostgreSQL应用开发之一 -- 爬取上市公司概况数据">
 <meta itemprop="description" content="psycopg2是PostgreSQL非常好的Python Client Library, 本文通过爬取上市公司的基础数据来演示如何使用"><meta itemprop="datePublished" content="2021-10-10T15:20:43+08:00" />
 <meta itemprop="dateModified" content="2021-10-10T15:20:43+08:00" />
-<meta itemprop="wordCount" content="371">
+<meta itemprop="wordCount" content="379">
 <meta itemprop="keywords" content="crawler,psycopg2," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="PostgreSQL应用开发之一 -- 爬取上市公司概况数据"/>
 <meta name="twitter:description" content="psycopg2是PostgreSQL非常好的Python Client Library, 本文通过爬取上市公司的基础数据来演示如何使用"/>
@@ -357,6 +357,7 @@ function tagCloud(where, min, max) {
     symbol varchar(32), --股票代码
     name varchar(128), --公司名称
     ceo varchar(64),   --法人代表,
+    capitol varchar(64), --注册资金
     addr varchar(128), --注册地址
     establish_date date, --成立日期
     listing_date date, --上市日期,
