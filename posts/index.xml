@@ -6,10 +6,19 @@
     <description>Recent content in Posts on PG极简运维</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>CC BY 4.0 CN</copyright>
-    <lastBuildDate>Sun, 10 Oct 2021 15:20:43 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 12 Oct 2021 20:19:10 +0800</lastBuildDate>
     
         <atom:link href="https://hseagle.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>PostgreSQL故障排查 -- 磁盘写满, autovacuum不香了</title>
+      <link>https://hseagle.github.io/2021/10/pg-autovacuum-failed/</link>
+      <pubDate>Tue, 12 Oct 2021 20:19:10 +0800</pubDate>
+      
+      <guid>https://hseagle.github.io/2021/10/pg-autovacuum-failed/</guid>
+      <description>&lt;p&gt;PostgreSQL运维中，遇到一两个没预期到故障，应该不是难事:(，比如这两天就刚解决掉一个磁盘无故写爆的案例。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>PostgreSQL应用开发之一 -- 爬取上市公司概况数据</title>

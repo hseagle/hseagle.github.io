@@ -2,7 +2,8 @@
 <html lang="zh">
   <head>
     <title>
-        PG极简运维</title>
+        PostgreSQL故障排查 -- 磁盘写满, autovacuum不香了 - PG极简运维
+      </title>
         <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport"
@@ -19,25 +20,30 @@
     <meta http-equiv="window-target" content="_top" />
     
     
-    
+    <meta name="description" content="PostgreSQL运维中，遇到一两个没预期到故障，应该不是难事:(，比如这两天就刚解决掉一个磁盘无故写爆的案例。
+" />
     <meta name="generator" content="Hugo 0.88.1 with theme pure" />
-    <title>PG极简运维</title>
+    <title>PostgreSQL故障排查 -- 磁盘写满, autovacuum不香了 - PG极简运维</title>
     
-    <link rel="alternate" type="application/rss+xml" href="https://hseagle.github.io/tags/pg%E5%AE%89%E8%A3%85/index.xml" title="PG极简运维" />
     
     <link rel="stylesheet" href="https://hseagle.github.io/css/style.min.e64d754037c0ee0ec4e20ab1d6f07740ace61729bc03850559b8caa21ae4a597.css">
     
     <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
-    <meta property="og:title" content="PG安装" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://hseagle.github.io/tags/pg%E5%AE%89%E8%A3%85/" />
+    <meta property="og:title" content="PostgreSQL故障排查 -- 磁盘写满, autovacuum不香了" />
+<meta property="og:description" content="PostgreSQL运维中，遇到一两个没预期到故障，应该不是难事:(，比如这两天就刚解决掉一个磁盘无故写爆的案例。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://hseagle.github.io/2021/10/pg-autovacuum-failed/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-10-12T20:19:10+08:00" />
+<meta property="article:modified_time" content="2021-10-12T20:19:10+08:00" />
 
-<meta itemprop="name" content="PG安装">
-<meta itemprop="description" content=""><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="PG安装"/>
-<meta name="twitter:description" content=""/>
+<meta itemprop="name" content="PostgreSQL故障排查 -- 磁盘写满, autovacuum不香了">
+<meta itemprop="description" content="PostgreSQL运维中，遇到一两个没预期到故障，应该不是难事:(，比如这两天就刚解决掉一个磁盘无故写爆的案例。"><meta itemprop="datePublished" content="2021-10-12T20:19:10+08:00" />
+<meta itemprop="dateModified" content="2021-10-12T20:19:10+08:00" />
+<meta itemprop="wordCount" content="782">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="PostgreSQL故障排查 -- 磁盘写满, autovacuum不香了"/>
+<meta name="twitter:description" content="PostgreSQL运维中，遇到一两个没预期到故障，应该不是难事:(，比如这两天就刚解决掉一个磁盘无故写爆的案例。"/>
 
     <!--[if lte IE 9]>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -305,72 +311,167 @@ function tagCloud(where, min, max) {
 
     
     
-<main class="main" role="main">
-    <article class="content article article-tags post-type-list" itemscope="">
-        <header class="article-header">
-            <h1 itemprop="name" class="hidden-xs">PG安装</h1>
-            <p class="text-muted hidden-xs">共 6 个标签</p>
-            <nav role="navigation" id="nav-main" class="okayNav">
-                <ul>
-                    <li><a href="https://hseagle.github.io/tags">All</a></li>
-                    <li><a href="https://hseagle.github.io/tags/citus/">citus</a></li>
-                    <li><a href="https://hseagle.github.io/tags/crawler/">crawler</a></li>
-                    <li><a href="https://hseagle.github.io/tags/ha/">ha</a></li>
-                    <li><a href="https://hseagle.github.io/tags/pg%E5%AE%89%E8%A3%85/">PG安装</a></li>
-                    <li><a href="https://hseagle.github.io/tags/psycopg2/">psycopg2</a></li>
-                    <li><a href="https://hseagle.github.io/tags/%E9%AB%98%E5%8F%AF%E7%94%A8/">高可用</a></li>
-                </ul>
-            </nav>
-        </header>
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/2021/10/pg-autovacuum-failed/"
+    >PostgreSQL故障排查 -- 磁盘写满, autovacuum不香了</a
+  >
+</h1>
+
+      <div class="article-meta">
         
-        <div class="article-body">
-            <div class="col-md-6"><article class="panel panel-default hover-shadow hover-grow" itemscope itemtype="http://schema.org/BlogPosting">
-    <div class="panel-body">
-        <div class="article-meta">
-            <time datetime="2021-10-10 10:14:49 &#43;0800 CST"
-                itemprop="datePublished">2021-10-10</time>
+<span class="article-date">
+  <i class="icon icon-calendar-check"></i>&nbsp;
+<a href="https://hseagle.github.io/2021/10/pg-autovacuum-failed/" class="article-date">
+  <time datetime="2021-10-12 20:19:10 &#43;0800 CST" itemprop="datePublished">2021-10-12</time>
+</a>
+</span>
+
+
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 2分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <p>PostgreSQL运维中，遇到一两个没预期到故障，应该不是难事:(，比如这两天就刚解决掉一个磁盘无故写爆的案例。</p>
+<h1 id="autovacuum">autovacuum</h1>
+<p>PostgreSQL实现MVCC的机制需要有一个vacuum的过程，为了减弱人工介入的必要性，在PG Server启动时，默认会自动拉起autovacuum。</p>
+<p>有了autovacuum并不意味着可以高枕无忧， 在某些情况下，autovacuum无法清除dead tuples，磁盘无法有效清理，最终写爆。</p>
+<h1 id="可能一-长时间的query">可能一 长时间的Query</h1>
+<p>如果某些Query运行了很长时间，比如几个小时甚至几天，那么这些Query就会导致autovacuum无法清除垃圾数据。</p>
+<p>假设这些查询是在T0时刻启动，在T1时刻，有数据被删除或者更新，在T2时刻，autovacuum开始进行清理，在这个新启动的清除过程中，只有T0时刻之前的dead tuples会被有效清理，而在T1时刻被删除的数据无法被清除，因为T0时刻的查询依然需要这些数据。</p>
+<p>要解决这个问题，就必须终止长时间的query。一种是等查询自然完成，另一种是显式的kill, 假设某query的pid是123, 那么使用 <strong>pg_terminate_backend</strong> 或 <strong>pg_cancel_backend</strong></p>
+<pre><code class="language-sql">select pg_terminate_backend(query_pid)
+</code></pre>
+<h1 id="可能二-废弃的replication-slots">可能二 废弃的replication slots</h1>
+<p>如果某些subscriptor订阅了CDC消息，但是subscriber异常退出后，并没有删除对应的replication slots，那么由于数据没有被消费，所以dead tuples也会被一直保留。</p>
+<p>用 <strong>pg_drop_replication_slot()</strong> 删除废弃不用的复制槽位。</p>
+<h1 id="可能三-僵死或处于孤儿状态的-prepared-transaction">可能三 僵死或处于孤儿状态的 prepared transaction</h1>
+<p>在两阶段提交(two-phase commit)中, 需要在第一步创建prepared transaction, 如果因为某种原因prepared transaction一直没有结束，那么从创建这个预事务之后的所有dead tuples无法得到清除。</p>
+<p>处理办法，先利用视图 <strong>pg_prepared_xacts</strong> 列出有哪些僵死的预事务，然后用 <strong>rollback prepared transaction_id</strong> 来回退该事务。</p>
+<p><a href="https://www.postgresql.org/docs/current/sql-rollback-prepared.html">rollback prepared</a> 链接有详细的示例说明</p>
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="https://hseagle.github.io/2021/10/pg-autovacuum-failed/" title="PostgreSQL故障排查 -- 磁盘写满, autovacuum不香了" target="_blank" rel="external">https://hseagle.github.io/2021/10/pg-autovacuum-failed/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License: </strong>
+        <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="/" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://hseagle.github.io/qiandaohu.png" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="/" target="_blank"><span class="text-dark">被程序截胡的段子手</span><small class="ml-1x"></small></a></h3>
+        <div>非典型文青</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+    </div>
+  </article>
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="https://hseagle.github.io/2021/10/pg-app-stock/" title="PostgreSQL应用开发之一 -- 爬取上市公司概况数据"><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        
+        <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal"
+            data-target="#donateModal"><span>赏</span></button>
+        
+        <div class="bar-right">
         </div>
-        <h3 class="article-title" itemprop="name">
-            <a class="article-link" href="https://hseagle.github.io/2021/10/pg-server-config/">PostgreSQL Server常用配置</a>
-        </h3>
     </div>
-    <div class="panel-footer">
-        <a href="https://hseagle.github.io/tags/pg%E5%AE%89%E8%A3%85" class="label label-default mb">PG安装</a>
-    </div>
-</article>
+</nav>
+
+
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content donate">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                    aria-hidden="true">&times;</span></button>
+            <div class="modal-body">
+                <div class="donate-box">
+                    <div class="donate-head">
+                        <p>感谢您的支持,我会继续努力的!</p>
+                    </div>
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+                            <div class="donate-payimg">
+                                <img src="https://hseagle.github.io/alipay_eagle.jpg"
+                                    alt="扫码支持" title="扫一扫" />
+                            </div>
+                            <p class="text-muted mv">扫码打赏, 多少你说了算~</p>
+                            <p class="text-grey">打开支付宝扫一扫，即可进行扫码打赏哦~</p>
+                        </div>
+                        <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+                            <div class="donate-payimg">
+                                <img src="https://hseagle.github.io/wechatpay_eagle.jpg"
+                                    alt="扫码支持" title="扫一扫" />
+                            </div>
+                            <p class="text-muted mv">扫码打赏, 多少你说了算~</p>
+                            <p class="text-grey">打开微信扫一扫，即可进行扫码打赏哦</p>
+                        </div>
+                    </div>
+                    <div class="donate-footer">
+                        <ul class="nav nav-tabs nav-justified" role="tablist">
+                            <li role="presentation" class="active">
+                                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay"
+                                    aria-expanded="true"><i class="icon icon-alipay"></i> 支付宝</a>
+                            </li>
+                            <li role="presentation" class="">
+                                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab"
+                                    aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i>
+                                    微信支付</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-            <div class="col-md-6"><article class="panel panel-default hover-shadow hover-grow" itemscope itemtype="http://schema.org/BlogPosting">
-    <div class="panel-body">
-        <div class="article-meta">
-            <time datetime="2021-07-05 13:14:49 &#43;0800 CST"
-                itemprop="datePublished">2021-07-05</time>
         </div>
-        <h3 class="article-title" itemprop="name">
-            <a class="article-link" href="https://hseagle.github.io/2021/07/pg-remote-access/">PG远程链接</a>
-        </h3>
     </div>
-    <div class="panel-footer">
-        <a href="https://hseagle.github.io/tags/pg%E5%AE%89%E8%A3%85" class="label label-default mb">PG安装</a>
-    </div>
-</article>
-            </div>
-            <div class="col-md-6"><article class="panel panel-default hover-shadow hover-grow" itemscope itemtype="http://schema.org/BlogPosting">
-    <div class="panel-body">
-        <div class="article-meta">
-            <time datetime="2021-07-05 12:43:24 &#43;0800 CST"
-                itemprop="datePublished">2021-07-05</time>
-        </div>
-        <h3 class="article-title" itemprop="name">
-            <a class="article-link" href="https://hseagle.github.io/2021/07/pg-install/">PostgreSQL安装和运行</a>
-        </h3>
-    </div>
-    <div class="panel-footer">
-        <a href="https://hseagle.github.io/tags/pg%E5%AE%89%E8%A3%85" class="label label-default mb">PG安装</a>
-    </div>
-</article>
-            </div>
-        </div>
-    </article>
+</div>
+
 </main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
 <ul class="social-links">
     <li><a href="https://hseagle.github.io/" target="_blank" title="github" data-toggle=tooltip data-placement=top >
@@ -448,6 +549,7 @@ function tagCloud(where, min, max) {
         hasInnerContainers: true,
     });
 </script>
+
 
 <script type="application/javascript">
 var doNotTrack = false;

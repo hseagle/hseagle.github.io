@@ -3,6 +3,27 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://hseagle.github.io/</loc>
+    <lastmod>2021-10-12T20:19:10+08:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://hseagle.github.io/2021/10/pg-autovacuum-failed/</loc>
+    <lastmod>2021-10-12T20:19:10+08:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://hseagle.github.io/posts/</loc>
+    <lastmod>2021-10-12T20:19:10+08:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://hseagle.github.io/tags/crawler/</loc>
     <lastmod>2021-10-10T15:20:43+08:00</lastmod>
     <changefreq>monthly</changefreq>
@@ -10,21 +31,7 @@
   </url>
   
   <url>
-    <loc>https://hseagle.github.io/</loc>
-    <lastmod>2021-10-10T15:20:43+08:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>https://hseagle.github.io/2021/10/pg-app-stock/</loc>
-    <lastmod>2021-10-10T15:20:43+08:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://hseagle.github.io/posts/</loc>
     <lastmod>2021-10-10T15:20:43+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
