@@ -2,7 +2,7 @@
 <html lang="zh">
   <head>
     <title>
-        PostgreSQL安装和运行 - PG极简运维
+        Debezium同步PostgreSQL数据到Kafka - PG极简运维
       </title>
         <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -20,30 +20,30 @@
     <meta http-equiv="window-target" content="_top" />
     
     
-    <meta name="description" content="本节涉及PostgreSQL的安装和运行， PostgreSQL历史悠久，Linux的各大发行版都对其支持友好，基本上都有编译好的二进制包直接可供下载安装。如果想亲自体验一下PostgreSQL的源码编译过程，那么就下载源码进行DIY，过程也不复杂。
+    <meta name="description" content="Debezium是一款非常活跃的数据同步工具， 本文介绍如何基于Kafka Connect和Debezium将PostgreSQL中的数据同步复制到Kafka.
 " />
     <meta name="generator" content="Hugo 0.88.1 with theme pure" />
-    <title>PostgreSQL安装和运行 - PG极简运维</title>
+    <title>Debezium同步PostgreSQL数据到Kafka - PG极简运维</title>
     
     
     <link rel="stylesheet" href="https://hseagle.github.io/css/style.min.e64d754037c0ee0ec4e20ab1d6f07740ace61729bc03850559b8caa21ae4a597.css">
     
     <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
-    <meta property="og:title" content="PostgreSQL安装和运行" />
-<meta property="og:description" content="本节涉及PostgreSQL的安装和运行， PostgreSQL历史悠久，Linux的各大发行版都对其支持友好，基本上都有编译好的二进制包直接可供下载安装。如果想亲自体验一下PostgreSQL的源码编译过程，那么就下载源码进行DIY，过程也不复杂。" />
+    <meta property="og:title" content="Debezium同步PostgreSQL数据到Kafka" />
+<meta property="og:description" content="Debezium是一款非常活跃的数据同步工具， 本文介绍如何基于Kafka Connect和Debezium将PostgreSQL中的数据同步复制到Kafka." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://hseagle.github.io/2021/07/pg-install/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2021-07-05T12:43:24+08:00" />
-<meta property="article:modified_time" content="2021-07-05T12:43:24+08:00" />
+<meta property="og:url" content="https://hseagle.github.io/2021/11/pg-debezium/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-11-03T12:13:49+08:00" />
+<meta property="article:modified_time" content="2021-11-03T12:13:49+08:00" />
 
-<meta itemprop="name" content="PostgreSQL安装和运行">
-<meta itemprop="description" content="本节涉及PostgreSQL的安装和运行， PostgreSQL历史悠久，Linux的各大发行版都对其支持友好，基本上都有编译好的二进制包直接可供下载安装。如果想亲自体验一下PostgreSQL的源码编译过程，那么就下载源码进行DIY，过程也不复杂。"><meta itemprop="datePublished" content="2021-07-05T12:43:24+08:00" />
-<meta itemprop="dateModified" content="2021-07-05T12:43:24+08:00" />
-<meta itemprop="wordCount" content="540">
-<meta itemprop="keywords" content="PG安装," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="PostgreSQL安装和运行"/>
-<meta name="twitter:description" content="本节涉及PostgreSQL的安装和运行， PostgreSQL历史悠久，Linux的各大发行版都对其支持友好，基本上都有编译好的二进制包直接可供下载安装。如果想亲自体验一下PostgreSQL的源码编译过程，那么就下载源码进行DIY，过程也不复杂。"/>
+<meta itemprop="name" content="Debezium同步PostgreSQL数据到Kafka">
+<meta itemprop="description" content="Debezium是一款非常活跃的数据同步工具， 本文介绍如何基于Kafka Connect和Debezium将PostgreSQL中的数据同步复制到Kafka."><meta itemprop="datePublished" content="2021-11-03T12:13:49+08:00" />
+<meta itemprop="dateModified" content="2021-11-03T12:13:49+08:00" />
+<meta itemprop="wordCount" content="840">
+<meta itemprop="keywords" content="PG逻辑复制," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Debezium同步PostgreSQL数据到Kafka"/>
+<meta name="twitter:description" content="Debezium是一款非常活跃的数据同步工具， 本文介绍如何基于Kafka Connect和Debezium将PostgreSQL中的数据同步复制到Kafka."/>
 
     <!--[if lte IE 9]>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -336,8 +336,8 @@ function tagCloud(where, min, max) {
       <h1 itemprop="name">
   <a
     class="article-title"
-    href="/2021/07/pg-install/"
-    >PostgreSQL安装和运行</a
+    href="/2021/11/pg-debezium/"
+    >Debezium同步PostgreSQL数据到Kafka</a
   >
 </h1>
 
@@ -345,87 +345,142 @@ function tagCloud(where, min, max) {
         
 <span class="article-date">
   <i class="icon icon-calendar-check"></i>&nbsp;
-<a href="https://hseagle.github.io/2021/07/pg-install/" class="article-date">
-  <time datetime="2021-07-05 12:43:24 &#43;0800 CST" itemprop="datePublished">2021-07-05</time>
+<a href="https://hseagle.github.io/2021/11/pg-debezium/" class="article-date">
+  <time datetime="2021-11-03 12:13:49 &#43;0800 CST" itemprop="datePublished">2021-11-03</time>
 </a>
 </span>
 <span class="article-category">
   <i class="icon icon-folder"></i>&nbsp;
   <a class="article-category-link" href="/categories/postgresql/"> PostgreSQL </a>
+  <a class="article-category-link" href="/categories/debezium/"> Debezium </a>
 </span>  
   <span class="article-tag">
     <i class="icon icon-tags"></i>&nbsp;
-    <a class="article-tag-link" href="/tags/pg%E5%AE%89%E8%A3%85/"> PG安装 </a>
+    <a class="article-tag-link" href="/tags/pg%E9%80%BB%E8%BE%91%E5%A4%8D%E5%88%B6/"> PG逻辑复制 </a>
   </span>
 
 		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 2分 </span>
       </div>
     </div>
     <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
-      <p>本节涉及PostgreSQL的安装和运行， PostgreSQL历史悠久，Linux的各大发行版都对其支持友好，基本上都有编译好的二进制包直接可供下载安装。如果想亲自体验一下PostgreSQL的源码编译过程，那么就下载源码进行DIY，过程也不复杂。</p>
-<hr>
-<h1 id="源码安装">源码安装</h1>
-<h2 id="编译步骤">编译步骤</h2>
-<p>假设已经安装好gcc, g++以及make</p>
-<pre><code class="language-bash">./configure
-make
-sudo make install
+      <p>Debezium是一款非常活跃的数据同步工具， 本文介绍如何基于Kafka Connect和Debezium将PostgreSQL中的数据同步复制到Kafka.</p>
+<h1 id="debezium实时同步postgresql数据到kafka">debezium实时同步PostgreSQL数据到Kafka</h1>
+<h2 id="postgresql配置">PostgreSQL配置</h2>
+<p>修改postgresql.conf中有关 <strong>wal_level</strong> 级别， 由默认的 <strong>replica</strong> 调整为 <strong>logical</strong>, 该配置项修改后需要重启PostgreSQL进程。</p>
+<pre><code class="language-ini">wal_level=logical
 </code></pre>
-<h2 id="初始化">初始化</h2>
-<pre><code class="language-bash">adduser postgres
-mkdir /usr/local/pgsql/data
-chown postgres /usr/local/pgsql/data
-su - postgres
-/usr/local/pgsql/bin/initdb -D /usr/local/pgsql/data
-/usr/local/pgsql/bin/pg_ctl -D /usr/local/pgsql/data -l logfile start
-/usr/local/pgsql/bin/createdb test
-/usr/local/pgsql/bin/psql test
+<h2 id="安装redpanda">安装redpanda</h2>
+<p>PostgreSQL数据实时变化过程中，有两类基本数据，一种是表中的数据的变更，另一种是表结构变更的信息。</p>
+<p>Kakfa用于存储表中的数据，Schema Registry用于保存表的结构数据。</p>
+<p>Kafka解决方案中涉及到的组件较多，比如需要部署zookeeper, kafka和schema registry，这让整个部署和维护链条都很长。Redpanad是为了解决部署链条过长的痛点而诞生的一个新开源项目，兼容kafka api， 但采用raft协议，去除了zookeeper信赖，同时支持schema registry。</p>
+<pre><code class="language-bash">docker run \
+  --name=redpanda-1 \
+  --network host \
+  --detach \
+  --rm \
+  vectorized/redpanda:v21.9.5 start \
+  --overprovisioned \
+  --smp 1 \
+  --memory 1G \
+  --reserve-memory 0M \
+  --node-id 0 \
+  --check=false \
+  --pandaproxy-addr 0.0.0.0:8082 \
+  --advertise-pandaproxy-addr 127.0.0.1:8082 \
+  --kafka-addr 0.0.0.0:9092 \
+  --advertise-kafka-addr 127.0.0.1:9092 \
+  --set &quot;redpanda.enable_transactions=true&quot; \
+  --set &quot;redpanda.enable_idempotence=true&quot;
 </code></pre>
-<h2 id="安装结果验证">安装结果验证</h2>
-<pre><code class="language-bash">ps -ef|grep -i post
-sudo netstat -antpl|grep -i 5432
+<h2 id="安装kafka-connect">安装kafka-connect</h2>
+<p>利用docker来下载kafka-connect及其信赖。</p>
+<pre><code class="language-bash">docker pull debezium/connect
 </code></pre>
-<p>使用默认账户链接</p>
-<pre><code class="language-bash">psql -Upostgres -dpostgres
+<p>运行debezium/connect</p>
+<pre><code class="language-bash">docker run -it --name connect -p 8083:8083 -e GROUP_ID=1 -e CONFIG_STORAGE_TOPIC=my-connect-configs -e OFFSET_STORAGE_TOPIC=my-connect-offsets -e ADVERTISED_HOST_NAME=$(echo $DOCKER_HOST | cut -f3  -d'/' | cut -f1 -d':') --link zookeeper:zookeeper --link kafka:kafka debezium/connect
 </code></pre>
-<h1 id="centos7下安装">CentOS7下安装</h1>
-<pre><code class="language-bash">yum install postgresql13 postgresql13-server
-sudo systemctl enable postgresql-13
-sudo /usr/pgsql-13/bin/postgresql-13-setup initdb
-sudo systemctl start postgresql-13
+<p>将connect目录从docker container复制到host机器</p>
+<pre><code class="language-bash">docker cp connect:/kafka /tmp
 </code></pre>
-<h1 id="centos7下离线安装">CentOS7下离线安装</h1>
-<p>以postgresql 13为例，找到安装包下载地址。https://download.postgresql.org/pub/repos/yum/13/redhat/，如果是在linux下可能采用<strong>lftp</strong>打开该地址，执行如下指令下载</p>
-<pre><code class="language-bash">lftp https://download.postgresql.org/pub/repos/yum/13/redhat/rhel-7.12-x86_64/
-mirror . /tmp/pg13_installer
+<p><strong>config/connect-distributed.properties</strong></p>
+<pre><code class="language-ini">bootstrap.servers=127.0.0.1:9092
+group.id=2
+key.converter=org.apache.kafka.connect.json.JsonConverter
+value.converter=org.apache.kafka.connect.json.JsonConverter
+key.converter.schemas.enable=true
+value.converter.schemas.enable=true
+offset.storage.topic=my-connect-offsets
+offset.storage.replication.factor=1
+config.storage.topic=my-connect-configs
+config.storage.replication.factor=1
+status.storage.topic=my_connect_statuses
+status.storage.replication.factor=1
+offset.flush.interval.ms=60000
+rest.host.name=127.0.0.1
+rest.port=8083
+rest.advertised.host.name=127.0.0.1
+rest.advertised.port=8083
+plugin.path=/usr/share/java,/etc/kafka-connect/jars,/opt/bigdata/kafka-connect/connect
+internal.value.converter=org.apache.kafka.connect.json.JsonConverter
+offset.flush.timeout.ms=5000
+internal.key.converter=org.apache.kafka.connect.json.JsonConverter
+task.shutdown.graceful.timeout.ms=10000
 </code></pre>
-<p>下载完成之后，将安装包上传到目标机器，采用如下指令安装</p>
-<pre><code class="language-bash">sudo yum -y install libicu
-sudo yum -y localinstall postgresql13-libs-13.2-1PGDG.rhel7.x86_64.rpm 
-sudo yum -y localinstall ./postgresql13-13.2-1PGDG.rhel7.x86_64.rpm ./postgresql13-server-13.2-1PGDG.rhel7.x86_64.rpm
-sudo yum -y localinstall postgresql13-contrib-13.2-1PGDG.rhel7.x86_64.rpm
-sudo yum -y localinstall python3-psycopg2-2.8.5-1.rhel7.x86_64.rpm pg_partman_13-4.4.1-1.rhel7.x86_64.rpm pg_repack13-1.4.6-1.rhel7.x86_64.rpm
+<p>运行kafka connect</p>
+<pre><code class="language-bash">bin/connect-distributed.sh config/connect-distributed.properties
 </code></pre>
-<p>postgresql默认的数据目录是 <strong>/var/lib/pgsql/13/data</strong>, 如果要更换默认的文件夹， 需要修改文件 <strong>/usr/lib/systemd/system/postgresql-13.service</strong>
-比如下面示例中，就将数据目录更换到 <strong>/pgsql/13/data</strong>。</p>
-<p>如果不更改默认指定目录，可以直接跳到数据库初始化步骤。</p>
-<pre><code class="language-bash">Environment=PGDATA=/pgsql/13/data/
+<h2 id="注册connector">注册connector</h2>
+<p><strong>register-postgres-avro.json</strong></p>
+<pre><code class="language-json">{
+    &quot;name&quot;: &quot;anticrawler-connector-inst&quot;,
+    &quot;config&quot;: {
+        &quot;connector.class&quot;: &quot;io.debezium.connector.postgresql.PostgresConnector&quot;,
+        &quot;tasks.max&quot;: &quot;1&quot;,
+        &quot;database.hostname&quot;: &quot;127.0.0.1&quot;,
+        &quot;database.port&quot;: &quot;5432&quot;,
+        &quot;database.user&quot;: &quot;postgres&quot;,
+        &quot;database.dbname&quot; : &quot;postgres&quot;,
+        &quot;database.server.name&quot;: &quot;dbserver0&quot;,
+        &quot;publication.autocreate.mode&quot;:&quot;filtered&quot;,
+        &quot;schema.include.list&quot;: &quot;inst&quot;,
+        &quot;table.include.list&quot;: &quot;inst\\.mock_.*,prim\\.partitioned_demo_p20.*&quot;,
+        &quot;plugin.name&quot;:&quot;pgoutput&quot;,
+        &quot;heartbeat.interval.ms&quot;: &quot;5&quot;,
+        &quot;database.history.kafka.bootstrap.servers&quot;: &quot;127.0.0.1:9092&quot;,
+        &quot;database.history.kafka.topic&quot;: &quot;schema-changes.anticrawler&quot;,
+        &quot;key.converter&quot;: &quot;io.confluent.connect.avro.AvroConverter&quot;,
+        &quot;value.converter&quot;: &quot;io.confluent.connect.avro.AvroConverter&quot;,
+        &quot;key.converter.schema.registry.url&quot;: &quot;http://127.0.0.1:8081&quot;,
+        &quot;value.converter.schema.registry.url&quot;: &quot;http://127.0.0.1:8081&quot;,
+        &quot;transforms&quot;:&quot;Reroute&quot;,
+        &quot;transforms.Reroute.type&quot;:&quot;io.debezium.transforms.ByLogicalTableRouter&quot;,
+        &quot;transforms.Reroute.topic.regex&quot;: &quot;(.*)partitioned_demo(.*)&quot;,
+        &quot;transforms.Reroute.topic.replacement&quot;: &quot;$1partitioned_demo&quot;,
+        &quot;transforms.Reroute.key.enforce.uniqueness&quot;:&quot;false&quot;
+    }
+}
 </code></pre>
-<p>修改完成后执行</p>
-<pre><code class="language-bash">sudo systemctl daemon-reload
+<p>利用connect的rest api来注册connector</p>
+<pre><code class="language-bash">curl -i -X POST -H &quot;Accept:application/json&quot; -H  &quot;Content-Type:application/json&quot; http://127.0.0.1:8083/connectors/ -d @register-postgres-avro.json
 </code></pre>
-<h2 id="数据库初始化">数据库初始化</h2>
-<pre><code class="language-bash">sudo /usr/pgsql-13/bin/postgresql-13-setup initdb
+<h2 id="状态检测">状态检测</h2>
+<p>在<strong>PG</strong>侧验证逻辑复制的进度</p>
+<pre><code class="language-sql">select * from pg_stat_replication;
+select * from pg_replication_slots;
 </code></pre>
-<h1 id="gui">GUI</h1>
-<p><a href="https://www.beekeeperstudio.io/">BeeKeeper</a></p>
+<p>redpanda侧查看topic是否已经创建</p>
+<pre><code class="language-bash">rpk topic list
+</code></pre>
+<p>如果topic已经创建，接下来可以尝试观察一下同步的数据内容</p>
+<pre><code class="language-bash">rpk topic consume dbserver1.inst.tblname
+</code></pre>
     </div>
     <div class="article-footer">
 <blockquote class="mt-2x">
   <ul class="post-copyright list-unstyled">
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接: </strong>
-      <a href="https://hseagle.github.io/2021/07/pg-install/" title="PostgreSQL安装和运行" target="_blank" rel="external">https://hseagle.github.io/2021/07/pg-install/</a>
+      <a href="https://hseagle.github.io/2021/11/pg-debezium/" title="Debezium同步PostgreSQL数据到Kafka" target="_blank" rel="external">https://hseagle.github.io/2021/11/pg-debezium/</a>
     </li>
     <li class="post-copyright-license">
       <strong>License: </strong>
@@ -456,14 +511,9 @@ sudo yum -y localinstall python3-psycopg2-2.8.5-1.rhel7.x86_64.rpm pg_partman_13
     <div class="bar-inner">
         <ul class="pager pull-left">
             <li class="prev">
-                <a href="https://hseagle.github.io/2021/07/my-first-post/" title="PG的明天值得期待"><i
+                <a href="https://hseagle.github.io/2021/10/pg-autovacuum-failed/" title="PostgreSQL故障排查 -- 磁盘写满, autovacuum不香了"><i
                         class="icon icon-angle-left"
                         aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
-            </li>
-            <li class="next">
-                <a href="https://hseagle.github.io/2021/07/pg-remote-access/"
-                    title="PG远程链接"><span>上一篇&nbsp;&nbsp;</span><i
-                        class="icon icon-angle-right" aria-hidden="true"></i></a>
             </li>
             
             <li class="toggle-toc">

@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>Debezium同步PostgreSQL数据到Kafka</title>
+      <link>https://hseagle.github.io/2021/11/pg-debezium/</link>
+      <pubDate>Wed, 03 Nov 2021 12:13:49 +0800</pubDate>
+      
+      <guid>https://hseagle.github.io/2021/11/pg-debezium/</guid>
+      <description>&lt;p&gt;Debezium是一款非常活跃的数据同步工具， 本文介绍如何基于Kafka Connect和Debezium将PostgreSQL中的数据同步复制到Kafka.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>PostgreSQL故障排查 -- 磁盘写满, autovacuum不香了</title>
       <link>https://hseagle.github.io/2021/10/pg-autovacuum-failed/</link>
       <pubDate>Tue, 12 Oct 2021 20:19:10 +0800</pubDate>

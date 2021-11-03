@@ -2,8 +2,7 @@
 <html lang="zh">
   <head>
     <title>
-        PostgreSQL安装和运行 - PG极简运维
-      </title>
+        PG极简运维</title>
         <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport"
@@ -20,30 +19,25 @@
     <meta http-equiv="window-target" content="_top" />
     
     
-    <meta name="description" content="本节涉及PostgreSQL的安装和运行， PostgreSQL历史悠久，Linux的各大发行版都对其支持友好，基本上都有编译好的二进制包直接可供下载安装。如果想亲自体验一下PostgreSQL的源码编译过程，那么就下载源码进行DIY，过程也不复杂。
-" />
-    <meta name="generator" content="Hugo 0.88.1 with theme pure" />
-    <title>PostgreSQL安装和运行 - PG极简运维</title>
     
+    <meta name="generator" content="Hugo 0.88.1 with theme pure" />
+    <title>PG极简运维</title>
+    
+    <link rel="alternate" type="application/rss+xml" href="https://hseagle.github.io/categories/debezium/index.xml" title="PG极简运维" />
     
     <link rel="stylesheet" href="https://hseagle.github.io/css/style.min.e64d754037c0ee0ec4e20ab1d6f07740ace61729bc03850559b8caa21ae4a597.css">
     
     <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
-    <meta property="og:title" content="PostgreSQL安装和运行" />
-<meta property="og:description" content="本节涉及PostgreSQL的安装和运行， PostgreSQL历史悠久，Linux的各大发行版都对其支持友好，基本上都有编译好的二进制包直接可供下载安装。如果想亲自体验一下PostgreSQL的源码编译过程，那么就下载源码进行DIY，过程也不复杂。" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://hseagle.github.io/2021/07/pg-install/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2021-07-05T12:43:24+08:00" />
-<meta property="article:modified_time" content="2021-07-05T12:43:24+08:00" />
+    <meta property="og:title" content="Debezium" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://hseagle.github.io/categories/debezium/" />
 
-<meta itemprop="name" content="PostgreSQL安装和运行">
-<meta itemprop="description" content="本节涉及PostgreSQL的安装和运行， PostgreSQL历史悠久，Linux的各大发行版都对其支持友好，基本上都有编译好的二进制包直接可供下载安装。如果想亲自体验一下PostgreSQL的源码编译过程，那么就下载源码进行DIY，过程也不复杂。"><meta itemprop="datePublished" content="2021-07-05T12:43:24+08:00" />
-<meta itemprop="dateModified" content="2021-07-05T12:43:24+08:00" />
-<meta itemprop="wordCount" content="540">
-<meta itemprop="keywords" content="PG安装," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="PostgreSQL安装和运行"/>
-<meta name="twitter:description" content="本节涉及PostgreSQL的安装和运行， PostgreSQL历史悠久，Linux的各大发行版都对其支持友好，基本上都有编译好的二进制包直接可供下载安装。如果想亲自体验一下PostgreSQL的源码编译过程，那么就下载源码进行DIY，过程也不复杂。"/>
+<meta itemprop="name" content="Debezium">
+<meta itemprop="description" content=""><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Debezium"/>
+<meta name="twitter:description" content=""/>
 
     <!--[if lte IE 9]>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -320,219 +314,47 @@ function tagCloud(where, min, max) {
 
     
     
-<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
-  <div class="slimContent">
-    <h4 class="toc-title">文章目录</h4>
-    <nav id="toc" class="js-toc toc">
-
-    </nav>
-  </div>
-</aside>
-<main class="main" role="main"><div class="content">
-  <article id="-" class="article article-type-" itemscope
-    itemtype="http://schema.org/BlogPosting">
-    
-    <div class="article-header">
-      <h1 itemprop="name">
-  <a
-    class="article-title"
-    href="/2021/07/pg-install/"
-    >PostgreSQL安装和运行</a
-  >
-</h1>
-
-      <div class="article-meta">
+<main class="main" role="main">
+    <article class="article article-categories article-type-list" itemscope="">
+        <header class="article-header">
+            <h1 itemprop="name" class="hidden-xs">Debezium</h1>
+            <p class="text-muted hidden-xs">共 6 个分类</p>
+            <nav role="navigation" id="nav-main" class="okayNav">
+                <ul>
+                    <li><a href="/categories/">All</a></li>
+                    <li><a href="https://hseagle.github.io/categories/citus/">citus</a></li>
+                    <li><a href="https://hseagle.github.io/categories/config/">config</a></li>
+                    <li><a href="https://hseagle.github.io/categories/debezium/">Debezium</a></li>
+                    <li><a href="https://hseagle.github.io/categories/patroni/">Patroni</a></li>
+                    <li><a href="https://hseagle.github.io/categories/postgresql/">PostgreSQL</a></li>
+                    <li><a href="https://hseagle.github.io/categories/raft/">raft</a></li>
+                </ul>
+            </nav>
+        </header>
         
-<span class="article-date">
-  <i class="icon icon-calendar-check"></i>&nbsp;
-<a href="https://hseagle.github.io/2021/07/pg-install/" class="article-date">
-  <time datetime="2021-07-05 12:43:24 &#43;0800 CST" itemprop="datePublished">2021-07-05</time>
+        <div class="article-body">
+            <div class="panel panel-default b-no">
+                <div class="panel-heading" role="tab">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" href="#collapse7a402d8c15037a6bfc87ae23bba25dd3" aria-expanded="true">
+                            <i class="icon icon-folder text-active"></i><i class="icon icon-folder-open text"></i>Debezium
+                        </a>
+                        <small class="text-muted">(Total1 articles)</small>
+                    </h4>
+                </div>
+                <div id="collapse7a402d8c15037a6bfc87ae23bba25dd3" class="panel-collapse collapse in" role="tabpanel"
+                    aria-labelledby="heading7a402d8c15037a6bfc87ae23bba25dd3">
+                    <div class="panel-body">
+                        <div class="collection"><a href="https://hseagle.github.io/2021/11/pg-debezium/" class="collection-item" itemprop="url" target="_blank">
+    <time datetime="2021-11-03 12:13:49 &#43;0800 CST" itemprop="datePublished" style="margin-right: 5px;">2021-11-03
+    </time>Debezium同步PostgreSQL数据到Kafka
 </a>
-</span>
-<span class="article-category">
-  <i class="icon icon-folder"></i>&nbsp;
-  <a class="article-category-link" href="/categories/postgresql/"> PostgreSQL </a>
-</span>  
-  <span class="article-tag">
-    <i class="icon icon-tags"></i>&nbsp;
-    <a class="article-tag-link" href="/tags/pg%E5%AE%89%E8%A3%85/"> PG安装 </a>
-  </span>
-
-		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 2分 </span>
-      </div>
-    </div>
-    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
-      <p>本节涉及PostgreSQL的安装和运行， PostgreSQL历史悠久，Linux的各大发行版都对其支持友好，基本上都有编译好的二进制包直接可供下载安装。如果想亲自体验一下PostgreSQL的源码编译过程，那么就下载源码进行DIY，过程也不复杂。</p>
-<hr>
-<h1 id="源码安装">源码安装</h1>
-<h2 id="编译步骤">编译步骤</h2>
-<p>假设已经安装好gcc, g++以及make</p>
-<pre><code class="language-bash">./configure
-make
-sudo make install
-</code></pre>
-<h2 id="初始化">初始化</h2>
-<pre><code class="language-bash">adduser postgres
-mkdir /usr/local/pgsql/data
-chown postgres /usr/local/pgsql/data
-su - postgres
-/usr/local/pgsql/bin/initdb -D /usr/local/pgsql/data
-/usr/local/pgsql/bin/pg_ctl -D /usr/local/pgsql/data -l logfile start
-/usr/local/pgsql/bin/createdb test
-/usr/local/pgsql/bin/psql test
-</code></pre>
-<h2 id="安装结果验证">安装结果验证</h2>
-<pre><code class="language-bash">ps -ef|grep -i post
-sudo netstat -antpl|grep -i 5432
-</code></pre>
-<p>使用默认账户链接</p>
-<pre><code class="language-bash">psql -Upostgres -dpostgres
-</code></pre>
-<h1 id="centos7下安装">CentOS7下安装</h1>
-<pre><code class="language-bash">yum install postgresql13 postgresql13-server
-sudo systemctl enable postgresql-13
-sudo /usr/pgsql-13/bin/postgresql-13-setup initdb
-sudo systemctl start postgresql-13
-</code></pre>
-<h1 id="centos7下离线安装">CentOS7下离线安装</h1>
-<p>以postgresql 13为例，找到安装包下载地址。https://download.postgresql.org/pub/repos/yum/13/redhat/，如果是在linux下可能采用<strong>lftp</strong>打开该地址，执行如下指令下载</p>
-<pre><code class="language-bash">lftp https://download.postgresql.org/pub/repos/yum/13/redhat/rhel-7.12-x86_64/
-mirror . /tmp/pg13_installer
-</code></pre>
-<p>下载完成之后，将安装包上传到目标机器，采用如下指令安装</p>
-<pre><code class="language-bash">sudo yum -y install libicu
-sudo yum -y localinstall postgresql13-libs-13.2-1PGDG.rhel7.x86_64.rpm 
-sudo yum -y localinstall ./postgresql13-13.2-1PGDG.rhel7.x86_64.rpm ./postgresql13-server-13.2-1PGDG.rhel7.x86_64.rpm
-sudo yum -y localinstall postgresql13-contrib-13.2-1PGDG.rhel7.x86_64.rpm
-sudo yum -y localinstall python3-psycopg2-2.8.5-1.rhel7.x86_64.rpm pg_partman_13-4.4.1-1.rhel7.x86_64.rpm pg_repack13-1.4.6-1.rhel7.x86_64.rpm
-</code></pre>
-<p>postgresql默认的数据目录是 <strong>/var/lib/pgsql/13/data</strong>, 如果要更换默认的文件夹， 需要修改文件 <strong>/usr/lib/systemd/system/postgresql-13.service</strong>
-比如下面示例中，就将数据目录更换到 <strong>/pgsql/13/data</strong>。</p>
-<p>如果不更改默认指定目录，可以直接跳到数据库初始化步骤。</p>
-<pre><code class="language-bash">Environment=PGDATA=/pgsql/13/data/
-</code></pre>
-<p>修改完成后执行</p>
-<pre><code class="language-bash">sudo systemctl daemon-reload
-</code></pre>
-<h2 id="数据库初始化">数据库初始化</h2>
-<pre><code class="language-bash">sudo /usr/pgsql-13/bin/postgresql-13-setup initdb
-</code></pre>
-<h1 id="gui">GUI</h1>
-<p><a href="https://www.beekeeperstudio.io/">BeeKeeper</a></p>
-    </div>
-    <div class="article-footer">
-<blockquote class="mt-2x">
-  <ul class="post-copyright list-unstyled">
-    <li class="post-copyright-link hidden-xs">
-      <strong>本文链接: </strong>
-      <a href="https://hseagle.github.io/2021/07/pg-install/" title="PostgreSQL安装和运行" target="_blank" rel="external">https://hseagle.github.io/2021/07/pg-install/</a>
-    </li>
-    <li class="post-copyright-license">
-      <strong>License: </strong>
-        <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
-    </li>
-  </ul>
-</blockquote>
-
-<div class="panel panel-default panel-badger">
-  <div class="panel-body">
-    <figure class="media">
-      <div class="media-left">
-        <a href="/" target="_blank" class="img-burn thumb-sm visible-lg">
-          <img src="https://hseagle.github.io/qiandaohu.png" class="img-rounded w-full" alt="">
-        </a>
-      </div>
-      <div class="media-body">
-        <h3 class="media-heading"><a href="/" target="_blank"><span class="text-dark">被程序截胡的段子手</span><small class="ml-1x"></small></a></h3>
-        <div>非典型文青</div>
-      </div>
-    </figure>
-  </div>
-</div>
-
-    </div>
-  </article>
-</div><nav class="bar bar-footer clearfix" data-stick-bottom>
-    <div class="bar-inner">
-        <ul class="pager pull-left">
-            <li class="prev">
-                <a href="https://hseagle.github.io/2021/07/my-first-post/" title="PG的明天值得期待"><i
-                        class="icon icon-angle-left"
-                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
-            </li>
-            <li class="next">
-                <a href="https://hseagle.github.io/2021/07/pg-remote-access/"
-                    title="PG远程链接"><span>上一篇&nbsp;&nbsp;</span><i
-                        class="icon icon-angle-right" aria-hidden="true"></i></a>
-            </li>
-            
-            <li class="toggle-toc">
-                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
-                    title="文章目录" role="button">
-                    <span>[&nbsp;</span><span>文章目录</span>
-                    <i class="text-collapsed icon icon-anchor"></i>
-                    <i class="text-in icon icon-close"></i>
-                    <span>]</span>
-                </a>
-            </li>
-        </ul>
-        
-        <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal"
-            data-target="#donateModal"><span>赏</span></button>
-        
-        <div class="bar-right">
-        </div>
-    </div>
-</nav>
-
-
-<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content donate">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                    aria-hidden="true">&times;</span></button>
-            <div class="modal-body">
-                <div class="donate-box">
-                    <div class="donate-head">
-                        <p>感谢您的支持,我会继续努力的!</p>
-                    </div>
-                    <div class="tab-content">
-                        <div role="tabpanel" class="tab-pane fade active in" id="alipay">
-                            <div class="donate-payimg">
-                                <img src="https://hseagle.github.io/alipay_eagle.jpg"
-                                    alt="扫码支持" title="扫一扫" />
-                            </div>
-                            <p class="text-muted mv">扫码打赏, 多少你说了算~</p>
-                            <p class="text-grey">打开支付宝扫一扫，即可进行扫码打赏哦~</p>
                         </div>
-                        <div role="tabpanel" class="tab-pane fade" id="wechatpay">
-                            <div class="donate-payimg">
-                                <img src="https://hseagle.github.io/wechatpay_eagle.jpg"
-                                    alt="扫码支持" title="扫一扫" />
-                            </div>
-                            <p class="text-muted mv">扫码打赏, 多少你说了算~</p>
-                            <p class="text-grey">打开微信扫一扫，即可进行扫码打赏哦</p>
-                        </div>
-                    </div>
-                    <div class="donate-footer">
-                        <ul class="nav nav-tabs nav-justified" role="tablist">
-                            <li role="presentation" class="active">
-                                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay"
-                                    aria-expanded="true"><i class="icon icon-alipay"></i> 支付宝</a>
-                            </li>
-                            <li role="presentation" class="">
-                                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab"
-                                    aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i>
-                                    微信支付</a>
-                            </li>
-                        </ul>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
-
+    </article>
 </main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
 <ul class="social-links">
     <li><a href="https://hseagle.github.io/" target="_blank" title="github" data-toggle=tooltip data-placement=top >
@@ -610,7 +432,6 @@ sudo yum -y localinstall python3-psycopg2-2.8.5-1.rhel7.x86_64.rpm pg_partman_13
         hasInnerContainers: true,
     });
 </script>
-
 
 <script type="application/javascript">
 var doNotTrack = false;

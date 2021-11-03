@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>citus on PG极简运维</title>
-    <link>https://hseagle.github.io/categories/citus/</link>
-    <description>Recent content in citus on PG极简运维</description>
+    <title>PG逻辑复制 on PG极简运维</title>
+    <link>https://hseagle.github.io/tags/pg%E9%80%BB%E8%BE%91%E5%A4%8D%E5%88%B6/</link>
+    <description>Recent content in PG逻辑复制 on PG极简运维</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>CC BY 4.0 CN</copyright>
-    <lastBuildDate>Mon, 05 Jul 2021 16:14:46 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 03 Nov 2021 12:13:49 +0800</lastBuildDate>
     
-        <atom:link href="https://hseagle.github.io/categories/citus/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="https://hseagle.github.io/tags/pg%E9%80%BB%E8%BE%91%E5%A4%8D%E5%88%B6/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
