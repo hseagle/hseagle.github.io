@@ -2,8 +2,7 @@
 <html lang="zh">
   <head>
     <title>
-        PostgreSQL Server常用配置 - PG极简运维
-      </title>
+        PG极简运维</title>
         <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport"
@@ -20,30 +19,25 @@
     <meta http-equiv="window-target" content="_top" />
     
     
-    <meta name="description" content="PostgreSQL常用配置简要说明
-" />
-    <meta name="generator" content="Hugo 0.88.1 with theme pure" />
-    <title>PostgreSQL Server常用配置 - PG极简运维</title>
     
+    <meta name="generator" content="Hugo 0.88.1 with theme pure" />
+    <title>PG极简运维</title>
+    
+    <link rel="alternate" type="application/rss+xml" href="https://hseagle.github.io/categories/materialize/index.xml" title="PG极简运维" />
     
     <link rel="stylesheet" href="https://hseagle.github.io/css/style.min.e64d754037c0ee0ec4e20ab1d6f07740ace61729bc03850559b8caa21ae4a597.css">
     
     <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
-    <meta property="og:title" content="PostgreSQL Server常用配置" />
-<meta property="og:description" content="PostgreSQL常用配置简要说明" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://hseagle.github.io/2021/10/pg-server-config/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2021-10-10T10:14:49+08:00" />
-<meta property="article:modified_time" content="2021-10-10T10:14:49+08:00" />
+    <meta property="og:title" content="Materialize" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://hseagle.github.io/categories/materialize/" />
 
-<meta itemprop="name" content="PostgreSQL Server常用配置">
-<meta itemprop="description" content="PostgreSQL常用配置简要说明"><meta itemprop="datePublished" content="2021-10-10T10:14:49+08:00" />
-<meta itemprop="dateModified" content="2021-10-10T10:14:49+08:00" />
-<meta itemprop="wordCount" content="358">
-<meta itemprop="keywords" content="PG安装," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="PostgreSQL Server常用配置"/>
-<meta name="twitter:description" content="PostgreSQL常用配置简要说明"/>
+<meta itemprop="name" content="Materialize">
+<meta itemprop="description" content=""><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Materialize"/>
+<meta name="twitter:description" content=""/>
 
     <!--[if lte IE 9]>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -330,330 +324,49 @@ function tagCloud(where, min, max) {
 
     
     
-<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
-  <div class="slimContent">
-    <h4 class="toc-title">文章目录</h4>
-    <nav id="toc" class="js-toc toc">
-
-    </nav>
-  </div>
-</aside>
-<main class="main" role="main"><div class="content">
-  <article id="-" class="article article-type-" itemscope
-    itemtype="http://schema.org/BlogPosting">
-    
-    <div class="article-header">
-      <h1 itemprop="name">
-  <a
-    class="article-title"
-    href="/2021/10/pg-server-config/"
-    >PostgreSQL Server常用配置</a
-  >
-</h1>
-
-      <div class="article-meta">
+<main class="main" role="main">
+    <article class="article article-categories article-type-list" itemscope="">
+        <header class="article-header">
+            <h1 itemprop="name" class="hidden-xs">Materialize</h1>
+            <p class="text-muted hidden-xs">共 8 个分类</p>
+            <nav role="navigation" id="nav-main" class="okayNav">
+                <ul>
+                    <li><a href="/categories/">All</a></li>
+                    <li><a href="https://hseagle.github.io/categories/citus/">citus</a></li>
+                    <li><a href="https://hseagle.github.io/categories/config/">config</a></li>
+                    <li><a href="https://hseagle.github.io/categories/debezium/">Debezium</a></li>
+                    <li><a href="https://hseagle.github.io/categories/imv/">IMV</a></li>
+                    <li><a href="https://hseagle.github.io/categories/materialize/">Materialize</a></li>
+                    <li><a href="https://hseagle.github.io/categories/patroni/">Patroni</a></li>
+                    <li><a href="https://hseagle.github.io/categories/postgresql/">PostgreSQL</a></li>
+                    <li><a href="https://hseagle.github.io/categories/raft/">raft</a></li>
+                </ul>
+            </nav>
+        </header>
         
-<span class="article-date">
-  <i class="icon icon-calendar-check"></i>&nbsp;
-<a href="https://hseagle.github.io/2021/10/pg-server-config/" class="article-date">
-  <time datetime="2021-10-10 10:14:49 &#43;0800 CST" itemprop="datePublished">2021-10-10</time>
+        <div class="article-body">
+            <div class="panel panel-default b-no">
+                <div class="panel-heading" role="tab">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" href="#collapse79f7d31890a1e79a1ca37bda489d88f2" aria-expanded="true">
+                            <i class="icon icon-folder text-active"></i><i class="icon icon-folder-open text"></i>Materialize
+                        </a>
+                        <small class="text-muted">(Total1 articles)</small>
+                    </h4>
+                </div>
+                <div id="collapse79f7d31890a1e79a1ca37bda489d88f2" class="panel-collapse collapse in" role="tabpanel"
+                    aria-labelledby="heading79f7d31890a1e79a1ca37bda489d88f2">
+                    <div class="panel-body">
+                        <div class="collection"><a href="https://hseagle.github.io/2021/11/pg-materializeinc/" class="collection-item" itemprop="url" target="_blank">
+    <time datetime="2021-11-12 15:13:49 &#43;0800 CST" itemprop="datePublished" style="margin-right: 5px;">2021-11-12
+    </time>PostgreSQL和Materialize构建实时增量视图
 </a>
-</span>
-<span class="article-category">
-  <i class="icon icon-folder"></i>&nbsp;
-  <a class="article-category-link" href="/categories/postgresql/"> PostgreSQL </a>
-  <a class="article-category-link" href="/categories/config/"> config </a>
-</span>  
-  <span class="article-tag">
-    <i class="icon icon-tags"></i>&nbsp;
-    <a class="article-tag-link" href="/tags/pg%E5%AE%89%E8%A3%85/"> PG安装 </a>
-  </span>
-
-		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 1分 </span>
-      </div>
-    </div>
-    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
-      <p>PostgreSQL常用配置简要说明</p>
-<h1 id="postgresql常用配置">PostgreSQL常用配置</h1>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">参数</th>
-<th style="text-align:left">用途</th>
-<th style="text-align:left">默认值</th>
-<th style="text-align:left">推荐值</th>
-<th>需要重启</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><!-- raw HTML omitted -->网络相关</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align:left">listen_addresses</td>
-<td style="text-align:left">监听地址</td>
-<td style="text-align:left">localhost</td>
-<td style="text-align:left">*表示对所有地址进行监听</td>
-<td>是</td>
-</tr>
-<tr>
-<td style="text-align:left">port</td>
-<td style="text-align:left">监听端口</td>
-<td style="text-align:left">5432</td>
-<td style="text-align:left"></td>
-<td>是</td>
-</tr>
-<tr>
-<td style="text-align:left">max_connections</td>
-<td style="text-align:left">最大网络链接数</td>
-<td style="text-align:left">100</td>
-<td style="text-align:left">PG14可以支持大并发链接</td>
-<td>是</td>
-</tr>
-<tr>
-<td style="text-align:left"><!-- raw HTML omitted -->内存相关</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align:left">shared_buffers</td>
-<td style="text-align:left">共享缓存</td>
-<td style="text-align:left">128MB</td>
-<td style="text-align:left">设置不高于总体内存的3/4</td>
-<td>是</td>
-</tr>
-<tr>
-<td style="text-align:left">effective_cache_size</td>
-<td style="text-align:left">允许磁盘缓存的最大容量, 值越大，走索引扫描的可能性越大</td>
-<td style="text-align:left">4GB</td>
-<td style="text-align:left">所有内存的1/2</td>
-<td>否</td>
-</tr>
-<tr>
-<td style="text-align:left">maintenance_work_mem</td>
-<td style="text-align:left">维护操作允许使用的最大内存，操作包括vacuum, create index, and alter table add foreign key</td>
-<td style="text-align:left">64MB</td>
-<td style="text-align:left">否</td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align:left">work_mem</td>
-<td style="text-align:left">查询进程使用的最大内存</td>
-<td style="text-align:left">4MB</td>
-<td style="text-align:left">Total RAM * 0.25 / max_connections</td>
-<td>否</td>
-</tr>
-<tr>
-<td style="text-align:left">temp_buffers</td>
-<td style="text-align:left">单个session允许使用的最大缓存</td>
-<td style="text-align:left">8MB</td>
-<td style="text-align:left">如果要创建temp表，可以将其设置为较大的值</td>
-<td>否</td>
-</tr>
-<tr>
-<td style="text-align:left"><!-- raw HTML omitted -->进程数</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align:left">max_worker_processes</td>
-<td style="text-align:left">最大后台进程数</td>
-<td style="text-align:left">8</td>
-<td style="text-align:left">是</td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align:left">max_parallel_workers</td>
-<td style="text-align:left">最大并行查询进程总数</td>
-<td style="text-align:left">8</td>
-<td style="text-align:left">否</td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align:left">max_parallel_workers_per_gather</td>
-<td style="text-align:left">单个query的并行进程数</td>
-<td style="text-align:left">2</td>
-<td style="text-align:left">否</td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align:left">shared_preload_libraries</td>
-<td style="text-align:left">预加载扩展</td>
-<td style="text-align:left">无</td>
-<td style="text-align:left">&lsquo;pg_statements&rsquo;</td>
-<td>是</td>
-</tr>
-<tr>
-<td style="text-align:left"><!-- raw HTML omitted -->日志相关</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align:left">logging_collector</td>
-<td style="text-align:left">日志开关</td>
-<td style="text-align:left">on</td>
-<td style="text-align:left"></td>
-<td>是</td>
-</tr>
-<tr>
-<td style="text-align:left">log_directory</td>
-<td style="text-align:left">日志目录</td>
-<td style="text-align:left">&lsquo;log&rsquo;</td>
-<td style="text-align:left"></td>
-<td>否</td>
-</tr>
-<tr>
-<td style="text-align:left">log_file_mode</td>
-<td style="text-align:left">日志文件权限</td>
-<td style="text-align:left">0600</td>
-<td style="text-align:left">否</td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align:left">log_truncate_on_rotation</td>
-<td style="text-align:left">日志回滚</td>
-<td style="text-align:left">on</td>
-<td style="text-align:left">否</td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align:left">log_rotation_age</td>
-<td style="text-align:left">回滚时长</td>
-<td style="text-align:left">1d</td>
-<td style="text-align:left"></td>
-<td>否</td>
-</tr>
-</tbody>
-</table>
-<h1 id="推荐站点">推荐站点</h1>
-<ol>
-<li><a href="https://pgtune.leopard.in.ua/#/">pgtune</a></li>
-<li><a href="https://www.pgconfig.org/#/?max_connections=100&amp;pg_version=13&amp;environment_name=WEB&amp;total_ram=4&amp;cpus=2&amp;drive_type=SSD&amp;arch=x86-64&amp;os_type=linux">pgconfig</a></li>
-</ol>
-    </div>
-    <div class="article-footer">
-<blockquote class="mt-2x">
-  <ul class="post-copyright list-unstyled">
-    <li class="post-copyright-link hidden-xs">
-      <strong>本文链接: </strong>
-      <a href="https://hseagle.github.io/2021/10/pg-server-config/" title="PostgreSQL Server常用配置" target="_blank" rel="external">https://hseagle.github.io/2021/10/pg-server-config/</a>
-    </li>
-    <li class="post-copyright-license">
-      <strong>License: </strong>
-        <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
-    </li>
-  </ul>
-</blockquote>
-
-<div class="panel panel-default panel-badger">
-  <div class="panel-body">
-    <figure class="media">
-      <div class="media-left">
-        <a href="/" target="_blank" class="img-burn thumb-sm visible-lg">
-          <img src="https://hseagle.github.io/qiandaohu.png" class="img-rounded w-full" alt="">
-        </a>
-      </div>
-      <div class="media-body">
-        <h3 class="media-heading"><a href="/" target="_blank"><span class="text-dark">被程序截胡的段子手</span><small class="ml-1x"></small></a></h3>
-        <div>非典型文青</div>
-      </div>
-    </figure>
-  </div>
-</div>
-
-    </div>
-  </article>
-</div><nav class="bar bar-footer clearfix" data-stick-bottom>
-    <div class="bar-inner">
-        <ul class="pager pull-left">
-            <li class="prev">
-                <a href="https://hseagle.github.io/2021/10/pg-patroni-raft/" title="PostgreSQL HA方案之Patroni[raft]篇"><i
-                        class="icon icon-angle-left"
-                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
-            </li>
-            <li class="next">
-                <a href="https://hseagle.github.io/2021/10/pg-app-stock/"
-                    title="PostgreSQL应用开发之一 -- 爬取上市公司概况数据"><span>上一篇&nbsp;&nbsp;</span><i
-                        class="icon icon-angle-right" aria-hidden="true"></i></a>
-            </li>
-            
-            <li class="toggle-toc">
-                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
-                    title="文章目录" role="button">
-                    <span>[&nbsp;</span><span>文章目录</span>
-                    <i class="text-collapsed icon icon-anchor"></i>
-                    <i class="text-in icon icon-close"></i>
-                    <span>]</span>
-                </a>
-            </li>
-        </ul>
-        
-        <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal"
-            data-target="#donateModal"><span>赏</span></button>
-        
-        <div class="bar-right">
-        </div>
-    </div>
-</nav>
-
-
-<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content donate">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                    aria-hidden="true">&times;</span></button>
-            <div class="modal-body">
-                <div class="donate-box">
-                    <div class="donate-head">
-                        <p>感谢您的支持,我会继续努力的!</p>
-                    </div>
-                    <div class="tab-content">
-                        <div role="tabpanel" class="tab-pane fade active in" id="alipay">
-                            <div class="donate-payimg">
-                                <img src="https://hseagle.github.io/alipay_eagle.jpg"
-                                    alt="扫码支持" title="扫一扫" />
-                            </div>
-                            <p class="text-muted mv">扫码打赏, 多少你说了算~</p>
-                            <p class="text-grey">打开支付宝扫一扫，即可进行扫码打赏哦~</p>
                         </div>
-                        <div role="tabpanel" class="tab-pane fade" id="wechatpay">
-                            <div class="donate-payimg">
-                                <img src="https://hseagle.github.io/wechatpay_eagle.jpg"
-                                    alt="扫码支持" title="扫一扫" />
-                            </div>
-                            <p class="text-muted mv">扫码打赏, 多少你说了算~</p>
-                            <p class="text-grey">打开微信扫一扫，即可进行扫码打赏哦</p>
-                        </div>
-                    </div>
-                    <div class="donate-footer">
-                        <ul class="nav nav-tabs nav-justified" role="tablist">
-                            <li role="presentation" class="active">
-                                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay"
-                                    aria-expanded="true"><i class="icon icon-alipay"></i> 支付宝</a>
-                            </li>
-                            <li role="presentation" class="">
-                                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab"
-                                    aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i>
-                                    微信支付</a>
-                            </li>
-                        </ul>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
-
+    </article>
 </main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
 <ul class="social-links">
     <li><a href="https://hseagle.github.io/" target="_blank" title="github" data-toggle=tooltip data-placement=top >
@@ -731,7 +444,6 @@ function tagCloud(where, min, max) {
         hasInnerContainers: true,
     });
 </script>
-
 
 <script type="application/javascript">
 var doNotTrack = false;

@@ -2,7 +2,7 @@
 <html lang="zh">
   <head>
     <title>
-        PostgreSQL Server常用配置 - PG极简运维
+        PostgreSQL和Materialize构建实时增量视图 - PG极简运维
       </title>
         <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -20,30 +20,30 @@
     <meta http-equiv="window-target" content="_top" />
     
     
-    <meta name="description" content="PostgreSQL常用配置简要说明
+    <meta name="description" content="Materialize是一款或者说当前市面上唯一一款支持实时增量视图的开源软件，在Materialize 0.9.0版本之后，支持以PostgreSQL为数据源，利用PostgreSQL的logical replication读取PG最新数据，本文演示如何把两者结合在一起，并利用简单的Python脚本，把最新的聚合结果写回到PostgreSQL。
 " />
     <meta name="generator" content="Hugo 0.88.1 with theme pure" />
-    <title>PostgreSQL Server常用配置 - PG极简运维</title>
+    <title>PostgreSQL和Materialize构建实时增量视图 - PG极简运维</title>
     
     
     <link rel="stylesheet" href="https://hseagle.github.io/css/style.min.e64d754037c0ee0ec4e20ab1d6f07740ace61729bc03850559b8caa21ae4a597.css">
     
     <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
-    <meta property="og:title" content="PostgreSQL Server常用配置" />
-<meta property="og:description" content="PostgreSQL常用配置简要说明" />
+    <meta property="og:title" content="PostgreSQL和Materialize构建实时增量视图" />
+<meta property="og:description" content="Materialize是一款或者说当前市面上唯一一款支持实时增量视图的开源软件，在Materialize 0.9.0版本之后，支持以PostgreSQL为数据源，利用PostgreSQL的logical replication读取PG最新数据，本文演示如何把两者结合在一起，并利用简单的Python脚本，把最新的聚合结果写回到PostgreSQL。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://hseagle.github.io/2021/10/pg-server-config/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2021-10-10T10:14:49+08:00" />
-<meta property="article:modified_time" content="2021-10-10T10:14:49+08:00" />
+<meta property="og:url" content="https://hseagle.github.io/2021/11/pg-materializeinc/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-11-12T15:13:49+08:00" />
+<meta property="article:modified_time" content="2021-11-12T15:13:49+08:00" />
 
-<meta itemprop="name" content="PostgreSQL Server常用配置">
-<meta itemprop="description" content="PostgreSQL常用配置简要说明"><meta itemprop="datePublished" content="2021-10-10T10:14:49+08:00" />
-<meta itemprop="dateModified" content="2021-10-10T10:14:49+08:00" />
-<meta itemprop="wordCount" content="358">
-<meta itemprop="keywords" content="PG安装," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="PostgreSQL Server常用配置"/>
-<meta name="twitter:description" content="PostgreSQL常用配置简要说明"/>
+<meta itemprop="name" content="PostgreSQL和Materialize构建实时增量视图">
+<meta itemprop="description" content="Materialize是一款或者说当前市面上唯一一款支持实时增量视图的开源软件，在Materialize 0.9.0版本之后，支持以PostgreSQL为数据源，利用PostgreSQL的logical replication读取PG最新数据，本文演示如何把两者结合在一起，并利用简单的Python脚本，把最新的聚合结果写回到PostgreSQL。"><meta itemprop="datePublished" content="2021-11-12T15:13:49+08:00" />
+<meta itemprop="dateModified" content="2021-11-12T15:13:49+08:00" />
+<meta itemprop="wordCount" content="633">
+<meta itemprop="keywords" content="Materialize," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="PostgreSQL和Materialize构建实时增量视图"/>
+<meta name="twitter:description" content="Materialize是一款或者说当前市面上唯一一款支持实时增量视图的开源软件，在Materialize 0.9.0版本之后，支持以PostgreSQL为数据源，利用PostgreSQL的logical replication读取PG最新数据，本文演示如何把两者结合在一起，并利用简单的Python脚本，把最新的聚合结果写回到PostgreSQL。"/>
 
     <!--[if lte IE 9]>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -346,8 +346,8 @@ function tagCloud(where, min, max) {
       <h1 itemprop="name">
   <a
     class="article-title"
-    href="/2021/10/pg-server-config/"
-    >PostgreSQL Server常用配置</a
+    href="/2021/11/pg-materializeinc/"
+    >PostgreSQL和Materialize构建实时增量视图</a
   >
 </h1>
 
@@ -355,198 +355,90 @@ function tagCloud(where, min, max) {
         
 <span class="article-date">
   <i class="icon icon-calendar-check"></i>&nbsp;
-<a href="https://hseagle.github.io/2021/10/pg-server-config/" class="article-date">
-  <time datetime="2021-10-10 10:14:49 &#43;0800 CST" itemprop="datePublished">2021-10-10</time>
+<a href="https://hseagle.github.io/2021/11/pg-materializeinc/" class="article-date">
+  <time datetime="2021-11-12 15:13:49 &#43;0800 CST" itemprop="datePublished">2021-11-12</time>
 </a>
 </span>
 <span class="article-category">
   <i class="icon icon-folder"></i>&nbsp;
   <a class="article-category-link" href="/categories/postgresql/"> PostgreSQL </a>
-  <a class="article-category-link" href="/categories/config/"> config </a>
+  <a class="article-category-link" href="/categories/materialize/"> Materialize </a>
+  <a class="article-category-link" href="/categories/imv/"> IMV </a>
 </span>  
   <span class="article-tag">
     <i class="icon icon-tags"></i>&nbsp;
-    <a class="article-tag-link" href="/tags/pg%E5%AE%89%E8%A3%85/"> PG安装 </a>
+    <a class="article-tag-link" href="/tags/materialize/"> Materialize </a>
   </span>
 
-		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 1分 </span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 2分 </span>
       </div>
     </div>
     <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
-      <p>PostgreSQL常用配置简要说明</p>
-<h1 id="postgresql常用配置">PostgreSQL常用配置</h1>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">参数</th>
-<th style="text-align:left">用途</th>
-<th style="text-align:left">默认值</th>
-<th style="text-align:left">推荐值</th>
-<th>需要重启</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><!-- raw HTML omitted -->网络相关</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align:left">listen_addresses</td>
-<td style="text-align:left">监听地址</td>
-<td style="text-align:left">localhost</td>
-<td style="text-align:left">*表示对所有地址进行监听</td>
-<td>是</td>
-</tr>
-<tr>
-<td style="text-align:left">port</td>
-<td style="text-align:left">监听端口</td>
-<td style="text-align:left">5432</td>
-<td style="text-align:left"></td>
-<td>是</td>
-</tr>
-<tr>
-<td style="text-align:left">max_connections</td>
-<td style="text-align:left">最大网络链接数</td>
-<td style="text-align:left">100</td>
-<td style="text-align:left">PG14可以支持大并发链接</td>
-<td>是</td>
-</tr>
-<tr>
-<td style="text-align:left"><!-- raw HTML omitted -->内存相关</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align:left">shared_buffers</td>
-<td style="text-align:left">共享缓存</td>
-<td style="text-align:left">128MB</td>
-<td style="text-align:left">设置不高于总体内存的3/4</td>
-<td>是</td>
-</tr>
-<tr>
-<td style="text-align:left">effective_cache_size</td>
-<td style="text-align:left">允许磁盘缓存的最大容量, 值越大，走索引扫描的可能性越大</td>
-<td style="text-align:left">4GB</td>
-<td style="text-align:left">所有内存的1/2</td>
-<td>否</td>
-</tr>
-<tr>
-<td style="text-align:left">maintenance_work_mem</td>
-<td style="text-align:left">维护操作允许使用的最大内存，操作包括vacuum, create index, and alter table add foreign key</td>
-<td style="text-align:left">64MB</td>
-<td style="text-align:left">否</td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align:left">work_mem</td>
-<td style="text-align:left">查询进程使用的最大内存</td>
-<td style="text-align:left">4MB</td>
-<td style="text-align:left">Total RAM * 0.25 / max_connections</td>
-<td>否</td>
-</tr>
-<tr>
-<td style="text-align:left">temp_buffers</td>
-<td style="text-align:left">单个session允许使用的最大缓存</td>
-<td style="text-align:left">8MB</td>
-<td style="text-align:left">如果要创建temp表，可以将其设置为较大的值</td>
-<td>否</td>
-</tr>
-<tr>
-<td style="text-align:left"><!-- raw HTML omitted -->进程数</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align:left">max_worker_processes</td>
-<td style="text-align:left">最大后台进程数</td>
-<td style="text-align:left">8</td>
-<td style="text-align:left">是</td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align:left">max_parallel_workers</td>
-<td style="text-align:left">最大并行查询进程总数</td>
-<td style="text-align:left">8</td>
-<td style="text-align:left">否</td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align:left">max_parallel_workers_per_gather</td>
-<td style="text-align:left">单个query的并行进程数</td>
-<td style="text-align:left">2</td>
-<td style="text-align:left">否</td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align:left">shared_preload_libraries</td>
-<td style="text-align:left">预加载扩展</td>
-<td style="text-align:left">无</td>
-<td style="text-align:left">&lsquo;pg_statements&rsquo;</td>
-<td>是</td>
-</tr>
-<tr>
-<td style="text-align:left"><!-- raw HTML omitted -->日志相关</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align:left">logging_collector</td>
-<td style="text-align:left">日志开关</td>
-<td style="text-align:left">on</td>
-<td style="text-align:left"></td>
-<td>是</td>
-</tr>
-<tr>
-<td style="text-align:left">log_directory</td>
-<td style="text-align:left">日志目录</td>
-<td style="text-align:left">&lsquo;log&rsquo;</td>
-<td style="text-align:left"></td>
-<td>否</td>
-</tr>
-<tr>
-<td style="text-align:left">log_file_mode</td>
-<td style="text-align:left">日志文件权限</td>
-<td style="text-align:left">0600</td>
-<td style="text-align:left">否</td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align:left">log_truncate_on_rotation</td>
-<td style="text-align:left">日志回滚</td>
-<td style="text-align:left">on</td>
-<td style="text-align:left">否</td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align:left">log_rotation_age</td>
-<td style="text-align:left">回滚时长</td>
-<td style="text-align:left">1d</td>
-<td style="text-align:left"></td>
-<td>否</td>
-</tr>
-</tbody>
-</table>
-<h1 id="推荐站点">推荐站点</h1>
-<ol>
-<li><a href="https://pgtune.leopard.in.ua/#/">pgtune</a></li>
-<li><a href="https://www.pgconfig.org/#/?max_connections=100&amp;pg_version=13&amp;environment_name=WEB&amp;total_ram=4&amp;cpus=2&amp;drive_type=SSD&amp;arch=x86-64&amp;os_type=linux">pgconfig</a></li>
-</ol>
+      <p>Materialize是一款或者说当前市面上唯一一款支持实时增量视图的开源软件，在Materialize 0.9.0版本之后，支持以PostgreSQL为数据源，利用PostgreSQL的logical replication读取PG最新数据，本文演示如何把两者结合在一起，并利用简单的Python脚本，把最新的聚合结果写回到PostgreSQL。</p>
+<h2 id="postgresql">PostgreSQL</h2>
+<p>PostgreSQL中的wal_level要设置为<strong>logical</strong>, 创建表并调整replica identity为<strong>FULL</strong>, 以表person为例。</p>
+<pre><code class="language-sql">create table person(name varchar(32), age int, int gender, primary key(name));
+alter table person replica identity full;
+</code></pre>
+<p>创建publication, 并添加表。</p>
+<pre><code class="language-sql">create publication pg_mz_publication;
+alter publication pg_mz_publication add table person;
+</code></pre>
+<p>检测publication中有哪些表会进行逻辑复制。</p>
+<pre><code class="language-sql">select * from pg_publication_tables;
+</code></pre>
+<h2 id="materialize-source">Materialize Source</h2>
+<p>Materialize中三个主要概念，分别是Source/View/Sink.</p>
+<p>source表示从哪裡读取数据，当前支持kafka/postgresql/avro文件等。</p>
+<p>view主要用于对Source进行分析和处理的逻辑。</p>
+<p>sink用于将view中变化的结果存储起来, 当前和kafka的整合较好。</p>
+<pre><code class="language-sql">create materialized source mz_pg_source 
+from postgres connection 'host=localhost user=postgres dbname=postgres' 
+publication 'pg_mz_publication';
+</code></pre>
+<h2 id="创建视图">创建视图</h2>
+<pre><code class="language-sql">create views from source mz_pg_source (person as person);
+</code></pre>
+<h2 id="创建分析视图">创建分析视图</h2>
+<pre><code class="language-sql">create materialized view stat_person as select gender, count(*) from person;
+</code></pre>
+<h2 id="视图变化结果存储到-__postgresql__">视图变化结果存储到 <strong>PostgreSQL</strong></h2>
+<p>使用tail命令可以捕获视图中最新的变化数据， 为了及时的把数据写入到Sink, 使用<strong>timeout</strong>参数。</p>
+<pre><code class="language-python">def watch_mv_change(mv_name):
+    mz_conn = psycopg2.connect(dsn)
+    dynamic_insert_sql = generate_insert_sql(mv_name)
+    try:
+         l_rows = []
+         with mz_conn.cursor() as cur:
+             cur.execute('declare c cursor for tail {}'.format(mv_name))
+             while True:
+                  cur.execute(&quot;fetch all c with (timeout='100ms')&quot;)
+                  l_rows.clear()
+                  for row in cur:
+                     if row[1] == 1:
+                         l_row = list(row)
+                         l_row.pop(0)
+                         l_row.pop(0)
+                         l_rows.append(tuple(l_row))
+                         if len(l_rows) &gt; 200:
+                             psycopg2.extras.execute_batch(pg_cur,dynamic_insert_sql, l_rows)
+                             pg_conn.commit()
+                             l_rows.clear()
+                  if len(l_rows) &gt; 0:
+                         psycopg2.extras.execute_batch(pg_cur,dynamic_insert_sql, l_rows)
+                         pg_conn.commit()
+    except Exception as ex:
+         print(mv_name)
+         print(ex)
+         pass
+</code></pre>
     </div>
     <div class="article-footer">
 <blockquote class="mt-2x">
   <ul class="post-copyright list-unstyled">
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接: </strong>
-      <a href="https://hseagle.github.io/2021/10/pg-server-config/" title="PostgreSQL Server常用配置" target="_blank" rel="external">https://hseagle.github.io/2021/10/pg-server-config/</a>
+      <a href="https://hseagle.github.io/2021/11/pg-materializeinc/" title="PostgreSQL和Materialize构建实时增量视图" target="_blank" rel="external">https://hseagle.github.io/2021/11/pg-materializeinc/</a>
     </li>
     <li class="post-copyright-license">
       <strong>License: </strong>
@@ -577,14 +469,9 @@ function tagCloud(where, min, max) {
     <div class="bar-inner">
         <ul class="pager pull-left">
             <li class="prev">
-                <a href="https://hseagle.github.io/2021/10/pg-patroni-raft/" title="PostgreSQL HA方案之Patroni[raft]篇"><i
+                <a href="https://hseagle.github.io/2021/11/pg-debezium/" title="Debezium同步PostgreSQL数据到Kafka"><i
                         class="icon icon-angle-left"
                         aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
-            </li>
-            <li class="next">
-                <a href="https://hseagle.github.io/2021/10/pg-app-stock/"
-                    title="PostgreSQL应用开发之一 -- 爬取上市公司概况数据"><span>上一篇&nbsp;&nbsp;</span><i
-                        class="icon icon-angle-right" aria-hidden="true"></i></a>
             </li>
             
             <li class="toggle-toc">

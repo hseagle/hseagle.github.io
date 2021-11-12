@@ -6,10 +6,19 @@
     <description>Recent content on PG极简运维</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>CC BY 4.0 CN</copyright>
-    <lastBuildDate>Wed, 03 Nov 2021 12:13:49 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 12 Nov 2021 15:13:49 +0800</lastBuildDate>
     
         <atom:link href="https://hseagle.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>PostgreSQL和Materialize构建实时增量视图</title>
+      <link>https://hseagle.github.io/2021/11/pg-materializeinc/</link>
+      <pubDate>Fri, 12 Nov 2021 15:13:49 +0800</pubDate>
+      
+      <guid>https://hseagle.github.io/2021/11/pg-materializeinc/</guid>
+      <description>&lt;p&gt;Materialize是一款或者说当前市面上唯一一款支持实时增量视图的开源软件，在Materialize 0.9.0版本之后，支持以PostgreSQL为数据源，利用PostgreSQL的logical replication读取PG最新数据，本文演示如何把两者结合在一起，并利用简单的Python脚本，把最新的聚合结果写回到PostgreSQL。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Debezium同步PostgreSQL数据到Kafka</title>
