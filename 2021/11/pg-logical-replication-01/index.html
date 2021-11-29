@@ -2,7 +2,7 @@
 <html lang="zh">
   <head>
     <title>
-        PG的明天值得期待 - PG极简运维
+        PostgreSQL逻辑复制--配置和监控 - PG极简运维
       </title>
         <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -20,29 +20,30 @@
     <meta http-equiv="window-target" content="_top" />
     
     
-    <meta name="description" content="数据库过去是，现在是，将来肯定也是互联网技术中的热点和重点, 在开源数据中，以功能论PostgreSQL无疑是最强的，自从2014年以来，在db-engines.com排名中始终稳定在第4,声誉积分不断抬升，和SqlServer积分不断下滑趋势相比，很有可能在2-3年后， PostgreSQL会进入排名的top3" />
+    <meta name="description" content="PostgreSQL支持逻辑复制，该方法复制数据库中的对象及其变化，类似于MySQL中的binlog机制。
+" />
     <meta name="generator" content="Hugo 0.89.3 with theme pure" />
-    <title>PG的明天值得期待 - PG极简运维</title>
+    <title>PostgreSQL逻辑复制--配置和监控 - PG极简运维</title>
     
     
     <link rel="stylesheet" href="https://hseagle.github.io/css/style.min.e64d754037c0ee0ec4e20ab1d6f07740ace61729bc03850559b8caa21ae4a597.css">
     
     <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
-    <meta property="og:title" content="PG的明天值得期待" />
-<meta property="og:description" content="数据库过去是，现在是，将来肯定也是互联网技术中的热点和重点, 在开源数据中，以功能论PostgreSQL无疑是最强的，自从2014年以来，在db-engines.com排名中始终稳定在第4,声誉积分不断抬升，和SqlServer积分不断下滑趋势相比，很有可能在2-3年后， PostgreSQL会进入排名的top3" />
+    <meta property="og:title" content="PostgreSQL逻辑复制--配置和监控" />
+<meta property="og:description" content="PostgreSQL支持逻辑复制，该方法复制数据库中的对象及其变化，类似于MySQL中的binlog机制。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://hseagle.github.io/2021/07/my-first-post/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2021-07-05T12:23:19+08:00" />
-<meta property="article:modified_time" content="2021-07-05T12:23:19+08:00" />
+<meta property="og:url" content="https://hseagle.github.io/2021/11/pg-logical-replication-01/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-11-29T19:19:10+08:00" />
+<meta property="article:modified_time" content="2021-11-29T19:19:10+08:00" />
 
-<meta itemprop="name" content="PG的明天值得期待">
-<meta itemprop="description" content="数据库过去是，现在是，将来肯定也是互联网技术中的热点和重点, 在开源数据中，以功能论PostgreSQL无疑是最强的，自从2014年以来，在db-engines.com排名中始终稳定在第4,声誉积分不断抬升，和SqlServer积分不断下滑趋势相比，很有可能在2-3年后， PostgreSQL会进入排名的top3"><meta itemprop="datePublished" content="2021-07-05T12:23:19+08:00" />
-<meta itemprop="dateModified" content="2021-07-05T12:23:19+08:00" />
-<meta itemprop="wordCount" content="214">
-<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="PG的明天值得期待"/>
-<meta name="twitter:description" content="数据库过去是，现在是，将来肯定也是互联网技术中的热点和重点, 在开源数据中，以功能论PostgreSQL无疑是最强的，自从2014年以来，在db-engines.com排名中始终稳定在第4,声誉积分不断抬升，和SqlServer积分不断下滑趋势相比，很有可能在2-3年后， PostgreSQL会进入排名的top3"/>
+<meta itemprop="name" content="PostgreSQL逻辑复制--配置和监控">
+<meta itemprop="description" content="PostgreSQL支持逻辑复制，该方法复制数据库中的对象及其变化，类似于MySQL中的binlog机制。"><meta itemprop="datePublished" content="2021-11-29T19:19:10+08:00" />
+<meta itemprop="dateModified" content="2021-11-29T19:19:10+08:00" />
+<meta itemprop="wordCount" content="497">
+<meta itemprop="keywords" content="逻辑复制," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="PostgreSQL逻辑复制--配置和监控"/>
+<meta name="twitter:description" content="PostgreSQL支持逻辑复制，该方法复制数据库中的对象及其变化，类似于MySQL中的binlog机制。"/>
 
     <!--[if lte IE 9]>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -353,8 +354,8 @@ function tagCloud(where, min, max) {
       <h1 itemprop="name">
   <a
     class="article-title"
-    href="/2021/07/my-first-post/"
-    >PG的明天值得期待</a
+    href="/2021/11/pg-logical-replication-01/"
+    >PostgreSQL逻辑复制--配置和监控</a
   >
 </h1>
 
@@ -362,26 +363,65 @@ function tagCloud(where, min, max) {
         
 <span class="article-date">
   <i class="icon icon-calendar-check"></i>&nbsp;
-<a href="https://hseagle.github.io/2021/07/my-first-post/" class="article-date">
-  <time datetime="2021-07-05 12:23:19 &#43;0800 CST" itemprop="datePublished">2021-07-05</time>
+<a href="https://hseagle.github.io/2021/11/pg-logical-replication-01/" class="article-date">
+  <time datetime="2021-11-29 19:19:10 &#43;0800 CST" itemprop="datePublished">2021-11-29</time>
 </a>
 </span>
-
+  
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>&nbsp;
+    <a class="article-tag-link" href="/tags/%E9%80%BB%E8%BE%91%E5%A4%8D%E5%88%B6/"> 逻辑复制 </a>
+  </span>
 
 		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 1分 </span>
       </div>
     </div>
     <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
-      <p>数据库过去是，现在是，将来肯定也是互联网技术中的热点和重点( <strong>有押注的意味</strong> ), 在开源数据中，以功能论PostgreSQL无疑是最强的，自从2014年以来，在db-engines.com排名中始终稳定在第4,声誉积分不断抬升，和SqlServer积分不断下滑趋势相比，很有可能在2-3年后， PostgreSQL会进入排名的top3。</p>
-<hr>
-<p>基于如上判断，在日常工作中会尽量使用PostgreSQL, 并将积累的一些经验记录下来，以便总结和查询。</p>
+      <p>PostgreSQL支持逻辑复制，该方法复制数据库中的对象及其变化，类似于MySQL中的binlog机制。</p>
+<h1 id="启用逻辑复制">启用逻辑复制</h1>
+<h2 id="最简配置">最简配置</h2>
+<p>把wal_level由<strong>replica</strong>更改为<strong>logical</strong>, 该设置项修改后需要重启PostgreSQL服务</p>
+<pre><code class="language-ini">wal_level = logical #默认是replica
+</code></pre>
+<h2 id="创建publication">创建publication</h2>
+<pre><code class="language-sql">create publication pg_pub_demo for table person;
+</code></pre>
+<h2 id="创建subscription">创建subscription</h2>
+<p>在另一个PostgreSQL实例中订阅刚才创建的Publication，复制的源schema和目的schema名称必须一致。</p>
+<pre><code class="language-sql">create subscription pg_sub_demo connection 'host=localhost dbname=postgres port=5432' publication pg_pub_demo;
+</code></pre>
+<p>如果是在同一个PostgreSQL实例中订阅，那么需要先创建一个新的database, 然后视情况创建schema与否, 再进行订阅。</p>
+<pre><code class="language-sql">create database test;
+\c test;
+create subscription pg_sub_demo connection 'host=localhost dbname=postgres port=5432' publication pg_pub_demo;
+</code></pre>
+<h1 id="监控逻辑复制进度">监控逻辑复制进度</h1>
+<h2 id="slot和stats">slot和stats</h2>
+<p>查看当前打开的逻辑复制slots, 每一个订阅者(subscriptor)都需要使用一个slot, 如果slot不存在，会自行创建。也可以先创建好replication slot,然后在订阅时使用刚创建好的slot。</p>
+<pre><code class="language-sql">select * from pg_replication_slots;
+</code></pre>
+<pre><code class="language-sql">select * from pg_stat_replication;
+</code></pre>
+<h2 id="复制延迟">复制延迟</h2>
+<p>复制延迟监控，注意下述sql语句输出的是滞后的字节数(bytes)。</p>
+<pre><code class="language-sql">SELECT slot_name,
+       pg_wal_lsn_diff(
+         pg_current_wal_lsn(),
+         restart_lsn
+       ) as restart_lag,
+       pg_wal_lsn_diff(
+         pg_current_wal_lsn(),
+         confirmed_flush_lsn
+       ) as flush_lag
+  FROM pg_replication_slots;
+</code></pre>
     </div>
     <div class="article-footer">
 <blockquote class="mt-2x">
   <ul class="post-copyright list-unstyled">
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接: </strong>
-      <a href="https://hseagle.github.io/2021/07/my-first-post/" title="PG的明天值得期待" target="_blank" rel="external">https://hseagle.github.io/2021/07/my-first-post/</a>
+      <a href="https://hseagle.github.io/2021/11/pg-logical-replication-01/" title="PostgreSQL逻辑复制--配置和监控" target="_blank" rel="external">https://hseagle.github.io/2021/11/pg-logical-replication-01/</a>
     </li>
     <li class="post-copyright-license">
       <strong>License: </strong>
@@ -411,10 +451,10 @@ function tagCloud(where, min, max) {
 </div><nav class="bar bar-footer clearfix" data-stick-bottom>
     <div class="bar-inner">
         <ul class="pager pull-left">
-            <li class="next">
-                <a href="https://hseagle.github.io/2021/07/pg-install/"
-                    title="PostgreSQL安装和运行"><span>上一篇&nbsp;&nbsp;</span><i
-                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            <li class="prev">
+                <a href="https://hseagle.github.io/2021/11/pg-materializeinc/" title="PostgreSQL和Materialize构建实时增量视图"><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
             </li>
             
             <li class="toggle-toc">

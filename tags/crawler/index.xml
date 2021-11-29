@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>PostgreSQL逻辑复制--配置和监控</title>
+      <link>https://hseagle.github.io/2021/11/pg-logical-replication-01/</link>
+      <pubDate>Mon, 29 Nov 2021 19:19:10 +0800</pubDate>
+      
+      <guid>https://hseagle.github.io/2021/11/pg-logical-replication-01/</guid>
+      <description>&lt;p&gt;PostgreSQL支持逻辑复制，该方法复制数据库中的对象及其变化，类似于MySQL中的binlog机制。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>PostgreSQL和Materialize构建实时增量视图</title>
       <link>https://hseagle.github.io/2021/11/pg-materializeinc/</link>
       <pubDate>Fri, 12 Nov 2021 15:13:49 +0800</pubDate>

@@ -6,10 +6,19 @@
     <description>Recent content on PG极简运维</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>CC BY 4.0 CN</copyright>
-    <lastBuildDate>Fri, 12 Nov 2021 15:13:49 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 29 Nov 2021 19:19:10 +0800</lastBuildDate>
     
         <atom:link href="https://hseagle.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>PostgreSQL逻辑复制--配置和监控</title>
+      <link>https://hseagle.github.io/2021/11/pg-logical-replication-01/</link>
+      <pubDate>Mon, 29 Nov 2021 19:19:10 +0800</pubDate>
+      
+      <guid>https://hseagle.github.io/2021/11/pg-logical-replication-01/</guid>
+      <description>&lt;p&gt;PostgreSQL支持逻辑复制，该方法复制数据库中的对象及其变化，类似于MySQL中的binlog机制。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>PostgreSQL和Materialize构建实时增量视图</title>
