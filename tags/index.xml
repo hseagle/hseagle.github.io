@@ -6,10 +6,19 @@
     <description>Recent content in Tags on PG极简运维</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>CC BY 4.0 CN</copyright>
-    <lastBuildDate>Mon, 29 Nov 2021 19:19:10 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 30 Nov 2021 17:19:10 +0800</lastBuildDate>
     
         <atom:link href="https://hseagle.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>PostgreSQL逻辑复制--常见坑点</title>
+      <link>https://hseagle.github.io/2021/11/pg-logical-replication-02/</link>
+      <pubDate>Tue, 30 Nov 2021 17:19:10 +0800</pubDate>
+      
+      <guid>https://hseagle.github.io/2021/11/pg-logical-replication-02/</guid>
+      <description>&lt;p&gt;PostgreSQL逻辑复制中几个常见的坑点，比如磁盘空间用光，CPU被打满。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>PostgreSQL逻辑复制--配置和监控</title>
